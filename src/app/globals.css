@@ -4,24 +4,95 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --background-rgb: 255, 255, 255;
+  --navbar-width-desktop: 240px;
+  --navbar-height-mobile: 64px;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-3.5 md:py-2 text-base md:text-sm font-medium text-white hover:bg-indigo-50 hover:text-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2;
+  }
+}
+
+.site-container {
+  border: 1px solid purple;
+  height: 100vh;
+  display: block;
+  position: relative;
+  
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+nav {
+  border: 1px solid blue;
+  background-color: #FFF;
+  width: 100vw;
+  height: var(--navbar-height-mobile);
+  position: fixed;
+  bottom: 0;
+
+  @media (min-width: 768px) {
+    width: var(--navbar-width-desktop);
+    height: 100vh;
+    left: 0;
+    bottom: unset;
+  }
+}
+
+main {
+  border: 1px solid green;
+  width: 100%;
+  padding-bottom: var(--navbar-height-mobile);
+  padding-right: 16px; /* so text doesn't overlap scrollbar */
+
+  @media (min-width: 768px) {
+    margin-left: 240px;
+    padding-bottom: 0;
+  }
+}
+
+nav ul {
+  border: 1px solid yellow;
+}
+
+nav ul li {
+  border: 1px solid red;
+  display: inline-block;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+nav h1 {
+  font-weight: bold;
+}
+
+.show-on-desktop {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.hide-on-desktop {
+  display: inline-block;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+p {
+  margin-bottom: 16px;
 }
