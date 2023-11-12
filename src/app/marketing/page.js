@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="site-container">
       <nav>
-        <div className="show-on-desktop">
+        <div className="project-dropdown show-on-desktop">
           <h1>Ether Photo Studio</h1>
           {/* drop down */}
         </div>
@@ -17,10 +17,11 @@ export default function Home() {
           <li className="on">Marketing</li>
           <li className="show-on-desktop">Invoices</li>
           <li className="show-on-desktop">Money</li>
-          <li className="show-on-desktop">Business</li>
+          <li className="show-on-desktop make-last-item">Business</li>
           <li className="hide-on-desktop">More</li>
         </ul>
       </nav>
+
       <main>
         <p>
           Chili pepper lemongrass black bean wraps arugula salad basil maple
