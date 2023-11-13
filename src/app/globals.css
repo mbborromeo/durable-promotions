@@ -23,7 +23,7 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-3.5 mb-6 md:py-2 text-base md:text-sm font-medium text-white hover:bg-indigo-50 hover:text-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2;
+    @apply inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-3.5 md:py-2 text-base md:text-sm font-medium text-white hover:bg-indigo-50 hover:text-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2;
   }
 }
 
@@ -207,6 +207,10 @@ h1 {
   margin-top: auto;
 }
 
+.flex-move-to-end {
+  margin-left: auto;
+}
+
 .show-on-desktop {
   display: none;
 
@@ -292,6 +296,26 @@ p {
   pointer-events: none;
 }
 
+.action-bar-left {
+  border: 1px solid orange;
+  width: 50%;
+
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+}
+
+.action-bar-right {
+  border: 1px solid green;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+
+  @media (min-width: 768px) {
+    width: 60%;
+  }
+}
+
 .flex-wrapper {
   display: flex;
   flex-direction: row;
@@ -301,6 +325,12 @@ p {
   @media (min-width: 768px) {
     align-items: center;
   }
+}
+
+.flex-wrapper-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .flex-wrapper-left {
