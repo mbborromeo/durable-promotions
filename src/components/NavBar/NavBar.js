@@ -1,11 +1,13 @@
 // import "./style.css";
+import { Menu } from "@headlessui/react";
 
 const NavBar = () => {
   return (
     <nav>
       <div className="project-dropdown show-on-desktop">
-        <h1>Ether Photo Studio</h1>
-        {/* drop down */}
+        <select name="website" id="website">
+          <option value="ether">Ether Photo Studio</option>
+        </select>
       </div>
 
       <ul>

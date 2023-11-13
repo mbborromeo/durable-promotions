@@ -47,7 +47,7 @@ main {
   height: 0;
 
   @media (min-width: 768px) {
-    height: 5%;
+    height: 7%;
   }
 }
 
@@ -76,7 +76,7 @@ nav ul {
 
   @media (min-width: 768px) {
     flex-direction: column;
-    height: 95%;
+    height: 93%;
   }
 }
 
@@ -122,6 +122,13 @@ nav ul li a:hover {
 
 nav ul li.on a {
   pointer-events: none; /* disable pointer icon if already on page */
+}
+
+nav select {
+  @apply text-base p-1;
+  font-weight: 600;
+  color: var(--gray-900);
+  width: 100%;
 }
 
 .icon {
