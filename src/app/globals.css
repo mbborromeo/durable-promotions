@@ -5,7 +5,8 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
-  --navbar-width-desktop: 240px;
+  --navbar-width-desktop: 17%; /* 240px */
+  --content-width-desktop: 83%;
   --navbar-height-mobile: 64px;
   --subnav-height-desktop: 7vh;
   --gray-100: #F3F4F6;
@@ -42,41 +43,10 @@ main {
   @apply p-4 md:p-6; /* padding-right needed so text doesn't overlap scrollbar */
   padding-top: var(--subnav-height-desktop);
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
-  width: 100%;
   height: max-content;
 
   @media (min-width: 768px) {
     margin-left: var(--navbar-width-desktop);
-  }
-}
-
-#subnav {
-  @apply p-4;
-  display: block;
-  height: var(--subnav-height-desktop);
-  border-bottom: 1px solid var(--gray-300);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 9;
-  background-color: #FFF;
-
-  @media (min-width: 768px) {
-    padding: 0;
-    left: var(--navbar-width-desktop);
-    border-bottom: none;
-    background-color: unset;    
-  }
-}
-
-.desktop-border {
-  @apply md:p-5;
-  border-bottom: none;
-  background-color: unset;
-
-  @media (min-width: 768px) {
-    border-bottom: 1px solid var(--gray-300);
-    background-color: var(--gray-100);
   }
 }
 
@@ -171,7 +141,7 @@ nav select {
 }
 
 h1 {
-  @apply text-base;
+  @apply text-base pr-12;
   font-weight: 700;
   color: var(--gray-900);
 }
@@ -250,4 +220,77 @@ nav h1 {
 
 p {
   margin-bottom: 16px;
+}
+
+.desktop-border {
+  @apply md:p-5;
+  border-bottom: none;
+  background-color: unset;
+
+  @media (min-width: 768px) {
+    border-bottom: 1px solid var(--gray-300);
+    background-color: var(--gray-100);
+  }
+}
+
+#subnav {
+  @apply p-4;
+  display: block;
+  height: var(--subnav-height-desktop);
+  border-bottom: 1px solid var(--gray-300);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  background-color: #FFF;
+
+  @media (min-width: 768px) {
+    padding: 0;
+    left: var(--navbar-width-desktop);
+    border-bottom: none;
+    background-color: unset;
+    width: var(--content-width-desktop);
+  }
+}
+
+#subnav ul li {
+  display: inline-block;
+  list-style-type: none;
+  @apply pr-6 md:pr-3;
+}
+
+#subnav ul li a {
+  border: 1px solid red;
+  display: block;
+  height: 100%;
+}
+
+#subnav ul li.on a,
+#subnav ul li a:hover
+{
+  border-bottom: 2px solid var(--gray-900);
+}
+
+#subnav ul li.on a {
+  pointer-events: none;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-wrapper-left {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.flex-wrapper-right {
+  display: flex;
+  flex-direction: row;
 }
