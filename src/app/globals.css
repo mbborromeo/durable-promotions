@@ -8,6 +8,7 @@
   --navbar-width-desktop: 240px;
   --navbar-height-mobile: 64px;
   --gray-100: #F3F4F6;
+  --gray-900: #111827;
 }
 
 body {
@@ -49,7 +50,7 @@ main {
   height: 0;
 
   @media (min-width: 768px) {
-    height: 8%;
+    height: 5%;
   }
 }
 
@@ -60,17 +61,19 @@ nav {
   height: var(--navbar-height-mobile);
   position: fixed;
   bottom: 0;
+  padding: 10px;
 
   @media (min-width: 768px) {
     width: var(--navbar-width-desktop);
     height: 100vh;
     left: 0;
     bottom: unset;
+    padding: 16px;
   }
 }
 
 nav ul {
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
   height: 100%;
 
   display: flex;
@@ -78,28 +81,31 @@ nav ul {
 
   @media (min-width: 768px) {
     flex-direction: column;
-    height: 92%;
+    height: 95%;
   }
 }
 
 nav ul li {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: inline-block;
 
   width: 16%; /* 58px */
   height: 44px;
-  border-radius: 6px;
-  margin: 10px 0 10px 10px;
+  margin-left: 10px;
   font-size: 10px;
-  background-color: var(--gray-100);
 
   @media (min-width: 768px) {
     display: block;
     width: auto;
-    margin: 12px;
     /* padding-left: 22px; */
+    margin-left: 0;
+    margin-bottom: 4px;
     font-size: 14px;
   }
+}
+
+nav ul li:first-child {
+  margin-left: 0;
 }
 
 nav ul li a {
@@ -107,15 +113,28 @@ nav ul li a {
   flex-direction: column;
   align-items: center;
 
+  border-radius: 6px;
+  
   width: auto;
   height: 100%;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 
   @media (min-width: 768px) {
     flex-direction: row;
-    
   }
 }
+
+nav ul li.on a,
+nav ul li a:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-900);
+  font-weight: 600;
+}
+
+nav ul li.on a {
+  pointer-events: none; /* disable pointer icon if already on page */
+}
+
 
 .icon {
   display: block;
@@ -129,6 +148,8 @@ nav ul li a {
     background-position: center left;
     width: 20px;
     height: 20px;
+    margin-left: 10px;
+    margin-right: 12px;
   }
 }
 

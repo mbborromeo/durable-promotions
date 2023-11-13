@@ -27,9 +27,9 @@ const NavBar = () => {
             <span>CRM</span>
           </a>
         </li>
-        <li>
+        <li className="on">
           <a href="#">
-            <span className="on icon icon-marketing"></span>
+            <span className="icon icon-marketing"></span>
             <span>Marketing</span>
           </a>
         </li>
