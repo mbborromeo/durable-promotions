@@ -6,7 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
   --navbar-width-desktop: 17%; /* 240px */
-  --content-width-desktop: 84%;
+  --content-width-desktop: 83%;
   --navbar-height-mobile: 64px;
   --subnav-height-desktop: 5vh;
   --nav-ul-height-desktop: 95%; /* 100% - --subnav-height-desktop */
@@ -98,13 +98,13 @@ nav ul li {
   height: 44px;
   margin-left: 5%;
   font-size: 0.625rem; /* 10px */
+  @apply md:text-sm;
 
   @media (min-width: 768px) {
     display: block;
     width: auto;
     margin-left: 0;
     margin-bottom: 4px;
-    font-size: 0.875rem; /* 14px */
   }
 }
 
@@ -141,6 +141,7 @@ nav select {
   @apply text-base px-1;
   font-weight: 600;
   color: var(--gray-900);
+  background-color: #FFF;
   width: 100%;
 }
 
@@ -229,7 +230,7 @@ p {
 .desktop-border {
   border-bottom: none;
   background-color: unset;
-  @apply md:mx-6 md:pt-1.5;
+  @apply md:mx-6;
 
   @media (min-width: 768px) {
     border-bottom: 1px solid var(--gray-300);
@@ -259,7 +260,7 @@ p {
 }
 
 #subnav h1 {
-  @apply pb-6 md:pt-3.5 md:pr-10;
+  @apply pb-6 md:pt-5 md:pr-10 md:mt-0.5;
 
   @media (min-width: 768px) {
     padding-bottom: 0;
@@ -278,7 +279,7 @@ p {
   user-select: none;
   color: var(--gray-500);
   font-weight: 500;
-  @apply text-sm md:p-4;
+  @apply text-sm px-1 pb-2 md:p-4 md:py-6;
 }
 
 #subnav ul li.on a,
