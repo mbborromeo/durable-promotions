@@ -12,6 +12,7 @@
   --nav-ul-height-desktop: 95%; /* 100% - --subnav-height-desktop */
   --gray-100: #F3F4F6;
   --gray-300: #D1D5DB;
+  --gray-500: #6B7280;
   --gray-900: #111827;
 }
 
@@ -228,7 +229,7 @@ p {
 .desktop-border {
   border-bottom: none;
   background-color: unset;
-  @apply md:mx-6 md:pt-1;
+  @apply md:mx-6 md:pt-1.5;
 
   @media (min-width: 768px) {
     border-bottom: 1px solid var(--gray-300);
@@ -258,7 +259,7 @@ p {
 }
 
 #subnav h1 {
-  @apply pb-6 md:pt-4 md:pr-10;
+  @apply pb-6 md:pt-3.5 md:pr-10;
 
   @media (min-width: 768px) {
     padding-bottom: 0;
@@ -275,7 +276,9 @@ p {
   display: block;
   height: 100%;
   user-select: none;
-  @apply md:p-4;
+  color: var(--gray-500);
+  font-weight: 500;
+  @apply text-sm md:p-4;
 }
 
 #subnav ul li.on a,
