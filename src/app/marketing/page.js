@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
+import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 
 export default function Home() {
   return (
@@ -104,13 +105,7 @@ export default function Home() {
           broccoli Sicilian pistachio pesto peppermint eating together.
         </p>
 
-        <button
-          type="button"
-          className="btn-primary"
-          // onClick={closeModal}
-        >
-          Create promotion
-        </button>
+        <ButtonPrimary label="Create promotion" />
       </main>
     </div>
   );
