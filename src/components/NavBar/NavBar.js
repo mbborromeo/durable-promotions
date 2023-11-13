@@ -9,14 +9,54 @@ const NavBar = () => {
       </div>
 
       <ul>
-        <li>Home</li>
-        <li>Website</li>
-        <li>CRM</li>
-        <li className="on">Marketing</li>
-        <li className="show-on-desktop">Invoices</li>
-        <li className="show-on-desktop">Money</li>
-        <li className="show-on-desktop make-last-item">Business</li>
-        <li className="hide-on-desktop">More</li>
+        <li>
+          <a href="#">
+            <span className="icon icon-home"></span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span className="icon icon-website"></span>
+            <span>Website</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span className="icon icon-crm"></span>
+            <span>CRM</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span className="on icon icon-marketing"></span>
+            <span>Marketing</span>
+          </a>
+        </li>
+        <li className="show-on-desktop">
+          <a href="#">
+            <span className="icon icon-invoices"></span>
+            <span>Invoices</span>
+          </a>
+        </li>
+        <li className="show-on-desktop">
+          <a href="#">
+            <span className="icon icon-money"></span>
+            <span>Money</span>
+          </a>
+        </li>
+        <li className="show-on-desktop make-last-item">
+          <a href="#">
+            <span className="icon icon-business"></span>
+            <span>Business</span>
+          </a>
+        </li>
+        <li className="hide-on-desktop">
+          <a href="#">
+            <span className="icon icon-more"></span>
+            <span>More</span>
+          </a>
+        </li>
       </ul>
     </nav>
   );

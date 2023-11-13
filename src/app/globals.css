@@ -91,14 +91,77 @@ nav ul li {
   border-radius: 6px;
   margin: 10px 0 10px 10px;
   font-size: 10px;
-  background: var(--gray-100);
+  background-color: var(--gray-100);
 
   @media (min-width: 768px) {
     display: block;
     width: auto;
     margin: 12px;
+    /* padding-left: 22px; */
     font-size: 14px;
   }
+}
+
+nav ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: auto;
+  height: 100%;
+  border: 1px solid green;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    
+  }
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  @media (min-width: 768px) {
+    background-position: center left;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.icon-home {
+  background-image: url('./images/icon_home.png');
+}
+
+.icon-website {
+  background-image: url('./images/icon_website.png');
+}
+
+.icon-crm {
+  background-image: url('./images/icon_crm.png');
+}
+
+.icon-marketing {
+  background-image: url('./images/icon_marketing.png');
+}
+
+.icon-invoices {
+  background-image: url('./images/icon_invoices.png');
+}
+
+.icon-money {
+  background-image: url('./images/icon_money.png');
+}
+
+.icon-business {
+  background-image: url('./images/icon_business.png');
+}
+
+.icon-more {
+  background-image: url('./images/icon_more.png');
 }
 
 .make-last-item {
