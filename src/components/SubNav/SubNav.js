@@ -18,8 +18,12 @@ const SubNav = () => {
             </ul>
           </div>
           <div className="flex-wrapper-right">
-            <a href="#">Notifications</a>
-            <a href="#">Profile</a>
+            <a href="#">
+              <span className="icon_announcements"></span>
+            </a>
+            <a href="#">
+              <span className="icon_profile"></span>
+            </a>
           </div>
         </div>
       </div>
