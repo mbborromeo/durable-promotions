@@ -23,7 +23,6 @@ body {
 }
 
 .site-container {
-  border: 1px solid purple;
   height: 100vh;
   display: block;
   position: relative;
@@ -35,14 +34,13 @@ body {
 }
 
 main {
-  border: 1px solid green;
   width: 100%;
-  padding-bottom: var(--navbar-height-mobile);
-  padding-right: 16px; /* so text doesn't overlap scrollbar */
+  padding: 16px; /* padding-right needed so text doesn't overlap scrollbar */  
+  padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
 
   @media (min-width: 768px) {
     margin-left: 240px;
-    padding-bottom: 0;
+    padding: 24px;
   }
 }
 
@@ -55,13 +53,13 @@ main {
 }
 
 nav {
-  border: 1px solid blue;
   background-color: #FFF;
   width: 100vw;
   height: var(--navbar-height-mobile);
   position: fixed;
   bottom: 0;
   padding: 10px;
+  box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.10);
 
   @media (min-width: 768px) {
     width: var(--navbar-width-desktop);
@@ -69,6 +67,7 @@ nav {
     left: 0;
     bottom: unset;
     padding: 16px;
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.10);
   }
 }
 
