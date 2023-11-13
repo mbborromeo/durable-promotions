@@ -34,13 +34,12 @@ body {
 }
 
 main {
-  width: 100%;
-  padding: 16px; /* padding-right needed so text doesn't overlap scrollbar */  
+  @apply p-4 md:p-6; /* padding-right needed so text doesn't overlap scrollbar */  
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
+  width: 100%;
 
   @media (min-width: 768px) {
     margin-left: 240px;
-    padding: 24px;
   }
 }
 
@@ -53,12 +52,12 @@ main {
 }
 
 nav {
-  background-color: #FFF;
+  @apply p-2.5 md:p-4;
   width: 100vw;
   height: var(--navbar-height-mobile);
   position: fixed;
   bottom: 0;
-  padding: 10px;
+  background-color: #FFF;
   box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.10);
 
   @media (min-width: 768px) {
@@ -66,7 +65,6 @@ nav {
     height: 100vh;
     left: 0;
     bottom: unset;
-    padding: 16px;
     box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.10);
   }
 }
@@ -87,14 +85,14 @@ nav ul li {
   width: 16%;
   height: 44px;
   margin-left: 5%;
-  font-size: 10px;
+  font-size: 0.625rem; /* 10px */
 
   @media (min-width: 768px) {
     display: block;
     width: auto;
     margin-left: 0;
     margin-bottom: 4px;
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
   }
 }
 
