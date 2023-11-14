@@ -21,11 +21,11 @@ body {
   background: var(--gray-100);
 }
 
-@layer components {
+/* @layer components {
   .btn-primary {
-    @apply inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-3.5 md:py-2 text-base md:text-sm font-medium text-white hover:bg-indigo-50 hover:text-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2;
+    @apply inline-flex justify-center rounded-md border border-transparent bg-indigo-600 leading-none h-11 md:h-9 px-4 py-3.5 md:py-2 text-sm font-medium text-white hover:bg-indigo-50 hover:text-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2;
   }
-}
+} */
 
 .site-container {
   /* border: 1px solid orange; */
@@ -208,7 +208,9 @@ h1 {
 }
 
 .flex-move-to-end {
-  margin-left: auto;
+  @media (min-width: 768px) {
+    margin-left: auto;
+  }
 }
 
 .show-on-desktop {
@@ -296,26 +298,6 @@ p {
   pointer-events: none;
 }
 
-.action-bar-left {
-  border: 1px solid orange;
-  width: 50%;
-
-  @media (min-width: 768px) {
-    width: 40%;
-  }
-}
-
-.action-bar-right {
-  border: 1px solid green;
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-
-  @media (min-width: 768px) {
-    width: 60%;
-  }
-}
-
 .flex-wrapper {
   display: flex;
   flex-direction: row;
@@ -330,7 +312,11 @@ p {
 .flex-wrapper-start {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
 }
 
 .flex-wrapper-left {
@@ -371,4 +357,40 @@ p {
 .flex-wrapper-right span.icon_profile {
   background-image: url('./images/icon_profile_32x32.png');
   background-size: 32px 32px;
+}
+
+#promosearch {
+  background-image: url('./images/icon_search.png');
+  background-repeat: no-repeat;
+  background-position: center left 8px;
+  background-size: 20px 20px;
+  padding-left: 40px;
+  width: 44px; /* 10% */
+  /* height: 44px; */
+  @apply h-11 md:h-9;
+  margin-right: 8px;
+  border-radius: 21px; /* round circle on mobile view initially */
+  border: 1px solid var(--gray-300);
+
+  @media (min-width: 768px) {
+    width: 22%;
+    margin-right: 12px;
+    border-radius: 6px;
+  }
+}
+
+.width-22 {
+  width: 35%;
+  /* height: 44px; */
+  /* @apply h-11 md:h-9; */
+  height: 100%;
+  margin-right: 8px;
+  /* @apply rounded-md border-gray-300; does not work */
+  border-radius: 6px;
+  border: 1px solid var(--gray-300);
+
+  @media (min-width: 768px) {
+    width: 22%;
+    margin-right: 12px;
+  }
 }

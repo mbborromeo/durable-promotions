@@ -12,21 +12,16 @@ export default function Home() {
       <SubNav />
 
       <main>
-        {/* version 1 */}
-        <div className="flex-wrapper">
-          <div className="action-bar-left">
-            <span>Search</span>
-            <DropDown />
-          </div>
-          <div className="action-bar-right">
-            <ButtonPrimary label="Create promotion" />
-          </div>
-        </div>
-
-        {/* version 2 */}
         <div className="flex-wrapper-start">
-          <span>Search</span>
-          <span>Filter</span>
+          <input
+            type="search"
+            placeholder="Search"
+            id="promosearch"
+            name="promosearch"
+          />
+
+          <DropDown />
+
           <span className="flex-move-to-end">
             <ButtonPrimary label="Create promotion" />
           </span>
