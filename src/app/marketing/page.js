@@ -8,61 +8,47 @@ import DropDown from "@/components/DropDown/DropDown";
 import mockDataPromotions from "@/app/data.json";
 
 const mockSinglePromo = {
-  // type: "google",
   company: "Ether Photo Studio 2",
-  // id: "g_eps_2",
   url: "etherphoto.durable.ca",
   paragraph:
     "Second A photography studio that specializes in ethereal emotive images.",
 };
 
 export default function Marketing() {
-  const [promotions, setPromotions] = useState([]);
+  // const [promotions, setPromotions] = useState([]);
+  // source: https://dev.to/saranshk/react-hooks-and-local-storage-let-s-build-a-todo-app-39g3#the-useeffect-hook
+  const promotionsFromStorage = JSON.parse(
+    localStorage.getItem("localStorage_promotions")
+  );
+  console.log("1. promotionsFromStorage:", promotionsFromStorage);
+  const [promotions, setPromotions] = useState(promotionsFromStorage || []);
 
   /* run initially only */
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      const promotionsFromStorage = JSON.parse(
-        localStorage.getItem("localStorage_promotions")
-      );
-
-      console.log("promotionsFromStorage---", promotionsFromStorage);
-
-      if (promotionsFromStorage && promotionsFromStorage.length > 0) {
-        console.log("localStorage has existing promotions");
-        setPromotions(promotionsFromStorage);
-      } else {
-        console.log("no existing promotions in localStorage. Using mock data");
-        setPromotions(mockDataPromotions);
-        // is the line below needed, since there is also a useEffect that runs when 'promotions' state changes?
-        /* 
-        localStorage.setItem(
-          "localStorage_promotions",
-          JSON.stringify(mockDataPromotions)
-        );
-        */
-      }
-    } else {
-      console.log("window or window.localStorage does not exist");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined" && window.localStorage) {
+  //     const promotionsFromStorage = JSON.parse(
+  //       localStorage.getItem("localStorage_promotions")
+  //     );
+  //
+  //     if (promotionsFromStorage && promotionsFromStorage.length > 0) {
+  //       setPromotions(promotionsFromStorage);
+  //     } else {
+  //       setPromotions(mockDataPromotions);
+  //     }
+  //   } else {
+  //     console.log("window or window.localStorage does not exist");
+  //   }
+  // }, []);
 
   /* run whenever promotions changes */
   useEffect(() => {
-    console.log("promotions has changed!!!!!");
     /* localStorage is a built-in HTML5 object */
     localStorage.setItem("localStorage_promotions", JSON.stringify(promotions));
   }, [promotions]);
 
-  console.log("promotions are", promotions);
-
-  const updatedItemsFromStorage = JSON.parse(
-    localStorage.getItem("localStorage_promotions")
-  );
-  console.log("updatedItemsFromStorage", updatedItemsFromStorage);
+  console.log("2. promotions:", promotions);
 
   const onClickCreate = (typeOfPromo) => {
-    console.log("onClickCreate - add to state and localStorage");
     const newPromo = mockSinglePromo;
 
     newPromo["type"] = typeOfPromo;
@@ -107,7 +93,6 @@ export default function Marketing() {
         {promotions.length > 0 &&
           promotions.map((promo, p) => {
             const date = new Date(promo.timestamp);
-            console.log("date", date);
             const month = [
               "Jan",
               "Feb",
