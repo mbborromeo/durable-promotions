@@ -39,6 +39,14 @@ The pages auto-update as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Running Linters
+
+Check ES syntax, React code, and report/fix bugs.
+
+### `npm run lint`
+
+Will report and auto-fix issues
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

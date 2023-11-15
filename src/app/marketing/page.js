@@ -20,8 +20,10 @@ export default function Marketing() {
   const promotionsFromStorage = JSON.parse(
     localStorage.getItem("localStorage_promotions")
   );
-  console.log("1. promotionsFromStorage:", promotionsFromStorage);
-  const [promotions, setPromotions] = useState(promotionsFromStorage || []);
+  // const [promotions, setPromotions] = useState(promotionsFromStorage || []);
+  const [promotions, setPromotions] = useState(
+    promotionsFromStorage || mockDataPromotions
+  );
 
   /* run initially only */
   // useEffect(() => {
@@ -45,8 +47,6 @@ export default function Marketing() {
     /* localStorage is a built-in HTML5 object */
     localStorage.setItem("localStorage_promotions", JSON.stringify(promotions));
   }, [promotions]);
-
-  console.log("2. promotions:", promotions);
 
   const onClickCreate = (typeOfPromo) => {
     const newPromo = mockSinglePromo;
@@ -126,3 +126,4 @@ export default function Marketing() {
     </div>
   );
 }
+
