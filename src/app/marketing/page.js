@@ -2,6 +2,7 @@ import Image from "next/image";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
+import DropDown from "@/components/DropDown/DropDown";
 
 export default function Home() {
   return (
@@ -11,6 +12,21 @@ export default function Home() {
       <SubNav />
 
       <main>
+        <div className="flex-wrapper-start">
+          <input
+            type="search"
+            placeholder="Search"
+            id="promosearch"
+            name="promosearch"
+          />
+
+          <DropDown />
+
+          <span className="flex-move-to-end">
+            <ButtonPrimary label="Create promotion" />
+          </span>
+        </div>
+
         <p>
           Chili pepper lemongrass black bean wraps arugula salad basil maple
           orange tempeh one bowl shallots crunchy seaweed golden cayenne pepper
@@ -104,8 +120,6 @@ export default function Home() {
           salad creamiest banana bread grapefruit macadamia nut cookies cayenne
           broccoli Sicilian pistachio pesto peppermint eating together.
         </p>
-
-        <ButtonPrimary label="Create promotion" />
       </main>
     </div>
   );
