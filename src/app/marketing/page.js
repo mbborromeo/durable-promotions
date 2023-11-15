@@ -1,10 +1,46 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
+import mockData from "@/app/data.json";
 
 export default function Home() {
+  const [promotions, setPromotions] = useState([]);
+
+  /* run whenever promotions changes */
+  useEffect(() => {
+    console.log("promotions has changed!!!!!");
+    /* localStorage is a built-in HTML5 object */
+    localStorage.setItem("localStorage_promotions", JSON.stringify(promotions));
+
+    // const updatedItemsFromStorage = JSON.parse(localStorage.getItem("localStorage_promotions"));
+    // console.log("updatedItemsFromStorage", updatedItemsFromStorage);
+  }, [promotions]);
+
+  /* run initially only */
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const promotionsFromStorage = JSON.parse(
+        localStorage.getItem("localStorage_promotions")
+      );
+
+      if (promotionsFromStorage && promotionsFromStorage.length > 0) {
+        console.log("localStorage has existing promotions");
+        setPromotions(promotionsFromStorage);
+      } else {
+        console.log("no existing promotions in localStorage. Using mock data");
+        setPromotions(mockData);
+      }
+    } else {
+      console.log("window or window.localStorage does not exist");
+    }
+  }, []);
+
+  console.log("promotions are", promotions);
+
   return (
     <div className="site-container">
       <NavBar />
@@ -27,99 +63,16 @@ export default function Home() {
           </span>
         </div>
 
-        <p>
-          Chili pepper lemongrass black bean wraps arugula salad basil maple
-          orange tempeh one bowl shallots crunchy seaweed golden cayenne pepper
-          red grapes mediterranean vegetables muffins red amazon pepper plums
-          winter vegan lychee pasta cranberry spritzer banh mi salad rolls tasty
-          smoky maple tempeh glaze lime mango crisp. Figs fresh mint lime taco
-          salsa strawberries enchiladas appetizer cashew sparkling pomegranate
-          punch Bolivian rainbow pepper sesame soba noodles lavender lemonade
-          Thai kale caesar salad falafel bites Bulgarian carrot salted almonds
-          hearty crunchy asian pear almond milk chai latte jalapeño hot green
-          tea. Ultimate mediterranean cherries summer lentils coconut sugar hemp
-          seeds green bowl cocoa hazelnut shiitake chili seasonal zesty tofu pad
-          thai matcha Thai sun pepper tomato and basil vine tomatoes kung pao
-          pepper ginger tofu Caribbean red habanero black beans cilantro coconut
-          milk.
-        </p>
-        <p>
-          Naga viper tabasco pepper summer fruit salad pine nuts chickpea crust
-          pizza creamy cauliflower alfredo sauce chia seeds coriander fiery
-          fruit four-layer chai tea delightful blueberry scones mocha chocolate
-          green onions springtime strawberry vitamin glow soy milk. Chilies soba
-          noodles spiced peppermint blast samosa lemon lime minty coconut rice
-          with almond milk cozy butternut salad kimchi alfalfa sprouts walnut
-          pesto tart instant pot picnic artichoke hearts cilantro lime
-          vinaigrette basmati avocado basil pesto green grapes lemon tahini
-          dressing walnut mushroom tart sandwiches salty leek.
-        </p>
-        <p>
-          Garlic sriracha noodles cookies rich coconut cream lemonade zest
-          banana pinch of yum thyme roasted brussel sprouts bruschetta Italian
-          linguine puttanesca açai mediterranean luxury bowl hummus falafel bowl
-          toasted hazelnuts strawberry mango smoothie balsamic vinaigrette.
-          Blood orange smash simmer kale avocado dressing drizzle cherry bomb
-          summertime earl grey latte habanero golden green papaya salad bite
-          sized parsley cumin shiitake mushrooms peach strawberry mango smoked
-          tofu cozy cinnamon oatmeal picnic salad sriracha pecans guacamole
-          candy cane winter apples overflowing berries mangos sweet potato pesto
-          portobello mushrooms Italian pepperoncini.
-        </p>
-        <p>
-          Apple vinaigrette ultra creamy avocado pesto ginger lemongrass agave
-          green tea roasted peanuts raspberry fizz blueberries potato frosted
-          gingerbread bites hearts of palm lemon cinnamon toast tempeh spiced
-          pumpkin chili. Udon noodles spring pomegranate dessert bananas
-          cauliflower dragon fruit cherry bomb pepper orange chocolate bento box
-          dark chocolate butternut mix entree miso dressing.
-        </p>
-        <p>
-          Blueberry pops edamame lemon red lentil soup hummus shaved almonds
-          cool cucumbers refreshing cucumber splash crispy iceberg lettuce main
-          course crispy coconut mushroom risotto dill sweet potato chocolate
-          cookie lime cool off Southern Italian fig arugula cashew salad paprika
-          spicy red pepper pineapple salsa Thai curry ginger carrot spiced juice
-          grenadillo elderberry. Blackberries oranges Chinese five-spice powder
-          Thai super chili seitan crumbled lentils peaches strawberry spinach
-          salad creamiest banana bread grapefruit macadamia nut cookies cayenne
-          broccoli Sicilian pistachio pesto peppermint eating together.
-        </p>
-        <p>
-          Cinnamon quinoa flatbread avocado couscous second course Malaysian
-          dark and stormy citrusy Thai basil curry ghost pepper peanut butter
-          crunch fruit smash onion tahini drizzle soup grains green tea lime
-          burritos heat sweet potato black bean burrito. Veggie burgers double
-          dark chocolate raspberries scotch bonnet pepper farro platter roasted
-          butternut squash red lentil curry banana bread edamame hummus mint
-          casserole cool red curry tofu noodles cremini mushrooms.
-        </p>
-        <p>
-          Creamy cauliflower alfredo lingonberry tofu black bean chili dip
-          comforting pumpkin spice latte Mexican fiesta green pepper fall Indian
-          spiced a delicious meal blueberry chia seed jam homemade balsamic
-          overflowing apricot seeds street style Thai basil tacos pumpkin miso
-          turmeric glazed aubergine sleepy morning tea.
-        </p>
-        <p>
-          Apple vinaigrette ultra creamy avocado pesto ginger lemongrass agave
-          green tea roasted peanuts raspberry fizz blueberries potato frosted
-          gingerbread bites hearts of palm lemon cinnamon toast tempeh spiced
-          pumpkin chili. Udon noodles spring pomegranate dessert bananas
-          cauliflower dragon fruit cherry bomb pepper orange chocolate bento box
-          dark chocolate butternut mix entree miso dressing.
-        </p>
-        <p>
-          Blueberry pops edamame lemon red lentil soup hummus shaved almonds
-          cool cucumbers refreshing cucumber splash crispy iceberg lettuce main
-          course crispy coconut mushroom risotto dill sweet potato chocolate
-          cookie lime cool off Southern Italian fig arugula cashew salad paprika
-          spicy red pepper pineapple salsa Thai curry ginger carrot spiced juice
-          grenadillo elderberry. Blackberries oranges Chinese five-spice powder
-          Thai super chili seitan crumbled lentils peaches strawberry spinach
-          salad creamiest banana bread grapefruit macadamia nut cookies cayenne
-          broccoli Sicilian pistachio pesto peppermint eating together.
-        </p>
+        {promotions.length > 0 &&
+          promotions.map((promo) => (
+            <div key={promo.id}>
+              <h1>{promo.type}</h1>
+              <span>{promo.url}</span>
+              <h2>{promo.company}</h2>
+              <p>{promo.paragraph}</p>
+              <hr />
+            </div>
+          ))}
       </main>
     </div>
   );
