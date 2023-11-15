@@ -6,7 +6,7 @@ const SubNav = () => {
           <div className="flex-wrapper-left">
             <h1>Marketing</h1>
             <ul>
-              <li class="on">
+              <li className="on">
                 <a href="#">Promotions</a>
               </li>
               <li>

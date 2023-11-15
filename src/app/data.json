@@ -1,0 +1,41 @@
+[
+  {
+    "type": "google",
+    "company": "Ether Photo Studio",
+    "id": "g_eps",
+    "url": "etherphoto.durable.co",
+    "paragraph":
+      "A photography studio that specializes in ethereal emotive images.",
+    "timestamp": 1666632563517 
+  },
+  {
+    "type": "facebook",
+    "company": "Ether Photo Studio",
+    "id": "fb_eps",
+    "url": "etherphoto.durable.co",
+    "paragraph":
+      "Wet place collodion is a process that dates back to the 1850s. It involves coating a metal plate with a light-sensitive mixture.",
+    "timestamp": 1666632563517
+  },
+  {
+    "type": "twitter",
+    "company": "Ether Photo Studio",
+    "id": "tw_eps",
+    "url": "etherphoto.durable.co",
+    "paragraph":
+      "Wet place collodion is an amazing process that allows you to create, beautiful, one-of-a-kind photographs!",
+    "timestamp": 1666632563517
+  },
+  {
+    "type": "email",
+    "company": "Ether Photo Studio",
+    "id": "e_eps",
+    "url": "etherphoto.durable.co",
+    "sender": "Jane Cooper",
+    "address": "person@email.com",
+    "title": "Free one-hour photo session!",
+    "paragraph":
+      "Hello, We are excited to announce a new promotion at our photography studio!",
+    "timestamp": 1666632563517
+  }
+]
