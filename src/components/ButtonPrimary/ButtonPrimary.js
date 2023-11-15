@@ -11,3 +11,4 @@ const ButtonPrimary = ({ label, handleClick }) => {
 };
 
 export default ButtonPrimary;
+

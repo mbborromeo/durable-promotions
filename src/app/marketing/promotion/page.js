@@ -1,4 +1,3 @@
-import Image from "next/image";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 
@@ -15,3 +14,4 @@ export default function Promotion() {
     </div>
   );
 }
+
