@@ -1,8 +1,12 @@
+# sdfsdfd sdfs df
+
+This is the front-end build of a hypothetical Marketing/Promotions page of a company's admin platform. Users will see a listing of the company's current promotions (from mock data), and when they click on the "Create Promotions" button they can create a: Google ad, Facebook post, Twitter tweet, and e-mail. This will be saved in localStorage, so next time the user views the webpage, the new promotions will still be visible.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 # System Dependencies
 
-Node 18.18.2
+Node 18.18.2\
 NPM 9.8.1
 
 ## Installation
@@ -25,8 +29,7 @@ pnpm dev
 bun dev
 ```
 
-This is the front-end build of the Marketing > Promotions page.
-Please open [http://localhost:3000/marketing](http://localhost:3000/marketing) with your browser to see the result.
+In your browser, please open [http://localhost:3000/marketing](http://localhost:3000/marketing) to view the page.
 
 The pages auto-update as you edit the file.
 
