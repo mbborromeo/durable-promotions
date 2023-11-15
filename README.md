@@ -2,7 +2,7 @@
 
 This is a mobile-responsive front-end build of a hypothetical Marketing/Promotions page of a company's admin platform. Users will see a listing of the company's current promotions (from mock data), and clicking on a current promotion will let you read its details. When the user clicks on the "Create Promotions" button, they will enter in details to create a new: Google ad, Facebook post, Twitter tweet, and e-mail. This will be saved in localStorage, so next time the user views the webpage, the new promotions will still be visible.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org)/React project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 CSS framework used is [Tailwind](https://tailwindcss.com).\
 Some elements used are from [HeadlessUI](https://headlessui.com).\
