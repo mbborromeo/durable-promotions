@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# System Dependencies
+
+Node 18.18.2
+NPM 9.8.1
+
 ## Installation
 
 ```bash
