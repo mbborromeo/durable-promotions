@@ -17,7 +17,7 @@ const mockSinglePromo = {
 export default function Marketing() {
   // source: https://dev.to/saranshk/react-hooks-and-local-storage-let-s-build-a-todo-app-39g3#the-useeffect-hook
   const promotionsFromStorage = JSON.parse(
-    localStorage.getItem("localStorage_promotions")
+    localStorage.getItem("localStorage_promotions"),
   );
   // let promotionsFromStorage = null;
   // if (typeof window !== "undefined" && window.localStorage) {
@@ -28,7 +28,7 @@ export default function Marketing() {
   // }
 
   const [promotions, setPromotions] = useState(
-    promotionsFromStorage || mockDataPromotions
+    promotionsFromStorage || mockDataPromotions,
   );
 
   /* run initially only */
