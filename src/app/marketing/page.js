@@ -5,7 +5,16 @@ import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
-import mockData from "@/app/data.json";
+import mockDataPromotions from "@/app/data.json";
+
+const mockSinglePromo = {
+  type: "google",
+  company: "Ether Photo Studio 2",
+  id: "g_eps_2",
+  url: "etherphoto.durable.ca",
+  paragraph:
+    "Second A photography studio that specializes in ethereal emotive images.",
+};
 
 export default function Home() {
   const [promotions, setPromotions] = useState([]);
@@ -32,7 +41,7 @@ export default function Home() {
         setPromotions(promotionsFromStorage);
       } else {
         console.log("no existing promotions in localStorage. Using mock data");
-        setPromotions(mockData);
+        setPromotions(mockDataPromotions);
       }
     } else {
       console.log("window or window.localStorage does not exist");
@@ -40,6 +49,18 @@ export default function Home() {
   }, []);
 
   console.log("promotions are", promotions);
+
+  const onClickCreate = () => {
+    console.log("onClickCreate - add to state and localStorage");
+    const newPromo = mockSinglePromo;
+    const timestamp = Date.now();
+    console.log("timestamp", timestamp);
+    newPromo["timestamp"] = timestamp;
+
+    const newPromotionsArray = [...promotions, newPromo];
+    console.log("newPromotionsArray", newPromotionsArray);
+    setPromotions(newPromotionsArray);
+  };
 
   return (
     <div className="site-container">
@@ -59,20 +80,46 @@ export default function Home() {
           <DropDown />
 
           <span className="flex-move-to-end">
-            <ButtonPrimary label="Create promotion" />
+            <ButtonPrimary
+              label="Create promotion"
+              handleClick={onClickCreate}
+            />
           </span>
         </div>
 
         {promotions.length > 0 &&
-          promotions.map((promo) => (
-            <div key={promo.id}>
-              <h1>{promo.type}</h1>
-              <span>{promo.url}</span>
-              <h2>{promo.company}</h2>
-              <p>{promo.paragraph}</p>
-              <hr />
-            </div>
-          ))}
+          promotions.map((promo, p) => {
+            const date = new Date(promo.timestamp);
+            console.log("date", date);
+            const month = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ];
+            const monthName = month[date.getMonth()];
+
+            return (
+              <div key={promo.id + "_" + p}>
+                <h1>{promo.type}</h1>
+                <div>
+                  {date.getDate() + " " + monthName + ", " + date.getFullYear()}
+                </div>
+                <div>{promo.url}</div>
+                <h2>{promo.company}</h2>
+                <p>{promo.paragraph}</p>
+                <hr />
+              </div>
+            );
+          })}
       </main>
     </div>
   );
