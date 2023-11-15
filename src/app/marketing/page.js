@@ -16,7 +16,7 @@ const mockSinglePromo = {
     "Second A photography studio that specializes in ethereal emotive images.",
 };
 
-export default function Home() {
+export default function Marketing() {
   const [promotions, setPromotions] = useState([]);
 
   /* run initially only */
@@ -34,6 +34,13 @@ export default function Home() {
       } else {
         console.log("no existing promotions in localStorage. Using mock data");
         setPromotions(mockDataPromotions);
+        // is the line below needed, since there is also a useEffect that runs when 'promotions' state changes?
+        /* 
+        localStorage.setItem(
+          "localStorage_promotions",
+          JSON.stringify(mockDataPromotions)
+        );
+        */
       }
     } else {
       console.log("window or window.localStorage does not exist");
@@ -134,4 +141,3 @@ export default function Home() {
     </div>
   );
 }
-
