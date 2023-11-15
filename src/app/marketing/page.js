@@ -19,6 +19,13 @@ export default function Marketing() {
   const promotionsFromStorage = JSON.parse(
     localStorage.getItem("localStorage_promotions")
   );
+  // let promotionsFromStorage = null;
+  // if (typeof window !== "undefined" && window.localStorage) {
+  //   console.log("browser has localStorage");
+  //   promotionsFromStorage = JSON.parse(
+  //     localStorage.getItem("localStorage_promotions")
+  //   );
+  // }
 
   const [promotions, setPromotions] = useState(
     promotionsFromStorage || mockDataPromotions
