@@ -8,9 +8,9 @@ import DropDown from "@/components/DropDown/DropDown";
 import mockDataPromotions from "@/app/data.json";
 
 const mockSinglePromo = {
-  type: "google",
+  // type: "google",
   company: "Ether Photo Studio 2",
-  id: "g_eps_2",
+  // id: "g_eps_2",
   url: "etherphoto.durable.ca",
   paragraph:
     "Second A photography studio that specializes in ethereal emotive images.",
@@ -19,22 +19,14 @@ const mockSinglePromo = {
 export default function Home() {
   const [promotions, setPromotions] = useState([]);
 
-  /* run whenever promotions changes */
-  useEffect(() => {
-    console.log("promotions has changed!!!!!");
-    /* localStorage is a built-in HTML5 object */
-    localStorage.setItem("localStorage_promotions", JSON.stringify(promotions));
-
-    // const updatedItemsFromStorage = JSON.parse(localStorage.getItem("localStorage_promotions"));
-    // console.log("updatedItemsFromStorage", updatedItemsFromStorage);
-  }, [promotions]);
-
   /* run initially only */
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const promotionsFromStorage = JSON.parse(
         localStorage.getItem("localStorage_promotions")
       );
+
+      console.log("promotionsFromStorage---", promotionsFromStorage);
 
       if (promotionsFromStorage && promotionsFromStorage.length > 0) {
         console.log("localStorage has existing promotions");
@@ -48,17 +40,33 @@ export default function Home() {
     }
   }, []);
 
+  /* run whenever promotions changes */
+  useEffect(() => {
+    console.log("promotions has changed!!!!!");
+    /* localStorage is a built-in HTML5 object */
+    localStorage.setItem("localStorage_promotions", JSON.stringify(promotions));
+  }, [promotions]);
+
   console.log("promotions are", promotions);
 
-  const onClickCreate = () => {
+  const updatedItemsFromStorage = JSON.parse(
+    localStorage.getItem("localStorage_promotions")
+  );
+  console.log("updatedItemsFromStorage", updatedItemsFromStorage);
+
+  const onClickCreate = (typeOfPromo) => {
     console.log("onClickCreate - add to state and localStorage");
     const newPromo = mockSinglePromo;
+
+    newPromo["type"] = typeOfPromo;
+
     const timestamp = Date.now();
-    console.log("timestamp", timestamp);
     newPromo["timestamp"] = timestamp;
 
+    const id = typeOfPromo + "_" + timestamp;
+    newPromo["id"] = id;
+
     const newPromotionsArray = [...promotions, newPromo];
-    console.log("newPromotionsArray", newPromotionsArray);
     setPromotions(newPromotionsArray);
   };
 
@@ -82,7 +90,9 @@ export default function Home() {
           <span className="flex-move-to-end">
             <ButtonPrimary
               label="Create promotion"
-              handleClick={onClickCreate}
+              handleClick={() => {
+                onClickCreate("google");
+              }}
             />
           </span>
         </div>
