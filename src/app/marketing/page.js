@@ -10,9 +10,9 @@ import filterOptions from "@/app/promotypes.json";
 
 const mockSinglePromo = {
   company: "Ether and Netherland Collaboration",
-  url: "etherphoto.durable.ca",
+  url: "netherlandphoto.durable.ca",
   paragraph:
-    "Second A photography studio that specializes in ethereal emotive images.",
+    "Netherland photography studio that specializes in ethereal emotive images.",
 };
 
 export default function Marketing() {
@@ -70,7 +70,11 @@ export default function Marketing() {
       promotionsToSearch = promotions.filter(
         (promo) =>
           promo.company.toLowerCase().indexOf(keywordTrimmed.toLowerCase()) !==
-          -1
+            -1 ||
+          promo.paragraph
+            .toLowerCase()
+            .indexOf(keywordTrimmed.toLowerCase()) !== -1 ||
+          promo.url.toLowerCase().indexOf(keywordTrimmed.toLowerCase()) !== -1
       );
     }
 
