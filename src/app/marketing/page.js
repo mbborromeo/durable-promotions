@@ -58,7 +58,6 @@ export default function Marketing() {
   };
 
   const onChangeSearch = (e) => {
-    console.log("onChangeSearch value", e.target.value);
     setSearchKeyword(e.target.value);
   };
 
