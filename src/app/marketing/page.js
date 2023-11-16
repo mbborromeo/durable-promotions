@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
-import moment from "moment";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
+import PromotionCard from "@/components/PromotionCard/PromotionCard";
 import mockDataPromotions from "@/app/data.json";
 import filterOptions from "@/app/promotypes.json";
 
@@ -121,19 +121,18 @@ export default function Marketing() {
           </span>
         </div>
 
-        {searchAndFilteredPromotions.length > 0 &&
-          searchAndFilteredPromotions.map((promo, p) => {
-            return (
-              <div key={promo.id + "_" + p}>
-                <h1>{promo.type}</h1>
-                <div>{moment(promo.timestamp).format("ll")}</div>
-                <div>{promo.url}</div>
-                <h2>{promo.company}</h2>
-                <p>{promo.paragraph}</p>
-                <hr />
-              </div>
-            );
-          })}
+        <div className="flex-wrapper-column">
+          {searchAndFilteredPromotions.length > 0 &&
+            searchAndFilteredPromotions.map((promo, p) => {
+              return (
+                <PromotionCard
+                  promotion={promo}
+                  index={p}
+                  key={promo.id + "_" + p}
+                />
+              );
+            })}
+        </div>
       </main>
     </div>
   );
