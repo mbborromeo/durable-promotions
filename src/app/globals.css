@@ -172,35 +172,35 @@ h1 {
 }
 
 .icon-home {
-  background-image: url('./images/icon_home.png');
+  background-image: url('/images/icon_home.png');
 }
 
 .icon-website {
-  background-image: url('./images/icon_website.png');
+  background-image: url('/images/icon_website.png');
 }
 
 .icon-crm {
-  background-image: url('./images/icon_crm.png');
+  background-image: url('/images/icon_crm.png');
 }
 
 .icon-marketing {
-  background-image: url('./images/icon_marketing.png');
+  background-image: url('/images/icon_marketing.png');
 }
 
 .icon-invoices {
-  background-image: url('./images/icon_invoices.png');
+  background-image: url('/images/icon_invoices.png');
 }
 
 .icon-money {
-  background-image: url('./images/icon_money.png');
+  background-image: url('/images/icon_money.png');
 }
 
 .icon-business {
-  background-image: url('./images/icon_business.png');
+  background-image: url('/images/icon_business.png');
 }
 
 .icon-more {
-  background-image: url('./images/icon_more.png');
+  background-image: url('/images/icon_more.png');
 }
 
 .make-last-item {
@@ -373,18 +373,18 @@ p {
 }
 
 .flex-wrapper-right span.icon_announcements {
-  background-image: url('./images/icon_announcements_24x24.png');
+  background-image: url('/images/icon_announcements_24x24.png');
   background-size: 24px 24px;
   padding: 4px;
 }
 
 .flex-wrapper-right span.icon_profile {
-  background-image: url('./images/icon_profile_32x32.png');
+  background-image: url('/images/icon_profile_32x32.png');
   background-size: 32px 32px;
 }
 
 #promosearch {
-  background-image: url('./images/icon_search.png');
+  background-image: url('/images/icon_search.png');
   background-repeat: no-repeat;
   background-position: center left 8px;
   background-size: 20px 20px;
