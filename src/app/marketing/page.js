@@ -19,7 +19,7 @@ export default function Marketing() {
   /* run initially */
   useEffect(() => {
     const promotionsFromStorage = JSON.parse(
-      localStorage.getItem("localStorage_promotions")
+      localStorage.getItem("localStorage_promotions"),
     );
     setPromotions(promotionsFromStorage || mockDataPromotions);
   }, []);
@@ -27,7 +27,7 @@ export default function Marketing() {
   const persistAndSetPromotions = (newPromotions) => {
     localStorage.setItem(
       "localStorage_promotions",
-      JSON.stringify(newPromotions)
+      JSON.stringify(newPromotions),
     );
     setPromotions(newPromotions);
   };
@@ -110,4 +110,3 @@ export default function Marketing() {
     </div>
   );
 }
-
