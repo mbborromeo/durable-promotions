@@ -1,0 +1,33 @@
+.badge {
+  border: 1px solid blue;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.badge.google {
+  background-image: url('/images/logo_google.png');
+}
+
+.badge.facebook {
+  background-image: url('/images/logo_facebook.png');
+}
+
+.badge.twitter {
+  background-image: url('/images/logo_twitter.png');
+}
+
+.badge.email {
+  background-image: url('/images/logo_email.png');
+}
+
+.icon_view {
+  display: block;
+  background-size: 20px 20px;
+  background-image: url('/images/icon_view.png');
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 28px;
+}

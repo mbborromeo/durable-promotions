@@ -309,6 +309,27 @@ p {
   }
 }
 
+.flex-wrapper-column {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+.flex-wrapper-column > div {
+  border: 1px solid orange;
+  width: 100%;
+  margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    width: 30%;
+  }
+}
+
 .flex-wrapper-start {
   display: flex;
   flex-direction: row;
