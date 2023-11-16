@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import moment from "moment";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
@@ -76,29 +77,10 @@ export default function Marketing() {
 
         {promotions.length > 0 &&
           promotions.map((promo, p) => {
-            const date = new Date(promo.timestamp);
-            const month = [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ];
-            const monthName = month[date.getMonth()];
-
             return (
               <div key={promo.id + "_" + p}>
                 <h1>{promo.type}</h1>
-                <div>
-                  {date.getDate() + " " + monthName + ", " + date.getFullYear()}
-                </div>
+                <div>{moment(promo.timestamp).format("ll")}</div>
                 <div>{promo.url}</div>
                 <h2>{promo.company}</h2>
                 <p>{promo.paragraph}</p>
