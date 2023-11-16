@@ -13,6 +13,7 @@
   --gray-100: #F3F4F6;
   --gray-300: #D1D5DB;
   --gray-500: #6B7280;
+  --gray-700: #374151;
   --gray-900: #111827;
 }
 
@@ -310,7 +311,6 @@ p {
 }
 
 .flex-wrapper-column {
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -318,15 +318,6 @@ p {
   @media (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-  }
-}
-.flex-wrapper-column > div {
-  border: 1px solid orange;
-  width: 100%;
-  margin-bottom: 16px;
-
-  @media (min-width: 768px) {
-    width: 30%;
   }
 }
 

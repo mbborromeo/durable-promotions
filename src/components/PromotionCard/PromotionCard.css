@@ -1,5 +1,32 @@
+.card {
+  background-color: #FFF;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+  @apply py-6 px-4 md:py-8 px-6;
+
+  @media (min-width: 768px) {
+    width: 30%;
+  }
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heading {
+  color: var(--gray-700);
+  font-weight: 700;
+  @apply pb-4 text-xl;
+}
+
+.date {
+  color: var(--gray-500);
+  @apply pb-4 text-sm;
+}
+
 .badge {
-  border: 1px solid blue;
   display: block;
   width: 24px;
   height: 24px;
@@ -23,11 +50,24 @@
   background-image: url('/images/logo_email.png');
 }
 
-.icon_view {
+.links a {
   display: block;
   background-size: 20px 20px;
-  background-image: url('/images/icon_view.png');
   background-repeat: no-repeat;
   background-position: center left;
   padding-left: 28px;
+  border-top: 1px solid var(--gray-100);
+  @apply py-2;
+}
+
+.links a:first-child {
+  border-top: none;
+}
+
+.links a.view {
+  background-image: url('/images/icon_view.png');
+}
+
+.links a.more {
+  background-image: url('/images/icon_elipsis_vert.png');
 }
