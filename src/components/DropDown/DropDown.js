@@ -3,38 +3,26 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
-const promotions = [
-  { id: 0, name: "All" },
-  { id: 1, name: "Google ad" },
-  { id: 2, name: "Facebook post" },
-  { id: 3, name: "Tweet" },
-  { id: 4, name: "Email" },
-];
+const DropDown = ({ options, value, handleOnChange }) => {
+  const [selectedOption, setSelectedOption] = useState(options[value]);
 
-const DropDown = () => {
-  // const [selectedPerson, setSelectedPerson] = useState(promotions[0]);
+  console.log("DropDown selectedOption state:", selectedOption);
 
-  // return (
-  //   <Listbox value={selectedPerson} onChange={setSelectedPerson}>
-  //     <Listbox.Button>{selectedPerson.name}</Listbox.Button>
-  //     <Listbox.Options>
-  //       {promotions.map((promo) => (
-  //         <Listbox.Option key={promo.id} value={promo}>
-  //           {promo.name}
-  //         </Listbox.Option>
-  //       ))}
-  //     </Listbox.Options>
-  //   </Listbox>
-  // );
-
-  const [selected, setSelected] = useState(promotions[0]);
+  // Source: https://headlessui.com/react/listbox#binding-objects-as-values
 
   return (
     <div className="width-22">
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox
+        value={selectedOption}
+        onChange={(optionObj) => {
+          console.log("ListBox optionObj", optionObj);
+          setSelectedOption(options[optionObj.id]);
+          handleOnChange(optionObj);
+        }}
+      >
         <div className="relative">
           <Listbox.Button className="relative w-full rounded-md cursor-default bg-white h-11 md:h-9 py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-            <span className="block truncate">{selected.name}</span>
+            <span className="block truncate">{selectedOption.name}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-gray-400"
@@ -49,15 +37,15 @@ const DropDown = () => {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-              {promotions.map((promo, personIdx) => (
+              {options.map((option, optionIdx) => (
                 <Listbox.Option
-                  key={personIdx}
+                  key={optionIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
                       active ? "bg-amber-100 text-amber-900" : "text-gray-900"
                     }`
                   }
-                  value={promo}
+                  value={option}
                 >
                   {({ selected }) => (
                     <>
@@ -66,7 +54,7 @@ const DropDown = () => {
                           selected ? "font-medium" : "font-normal"
                         }`}
                       >
-                        {promo.name}
+                        {option.name}
                       </span>
                       {selected ? (
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">

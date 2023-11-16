@@ -14,8 +14,17 @@ const mockSinglePromo = {
     "Second A photography studio that specializes in ethereal emotive images.",
 };
 
+const filterOptions = [
+  { id: 0, name: "All", type: "all" },
+  { id: 1, name: "Google ad", type: "google" },
+  { id: 2, name: "Facebook post", type: "facebook" },
+  { id: 3, name: "Tweet", type: "twitter" },
+  { id: 4, name: "Email", type: "email" },
+];
+
 export default function Marketing() {
   const [promotions, setPromotions] = useState([]);
+  const [filterSelectedIndex, setFilterSelectedIndex] = useState(0); // not used yet
 
   /* run initially */
   useEffect(() => {
@@ -48,6 +57,14 @@ export default function Marketing() {
     persistAndSetPromotions(newPromotionsArray);
   };
 
+  const onChangeFilter = (filterObj) => {
+    console.log("onChangeFilter index is:", filterObj.id);
+    console.log("onChangeFilter type is:", filterObj.type);
+    setFilterSelectedIndex(filterObj.id);
+
+    // filter list of promotions according to type selected
+  };
+
   return (
     <div className="site-container">
       <NavBar />
@@ -63,7 +80,11 @@ export default function Marketing() {
             name="promosearch"
           />
 
-          <DropDown />
+          <DropDown
+            options={filterOptions}
+            value={filterSelectedIndex}
+            handleOnChange={onChangeFilter}
+          />
 
           <span className="flex-move-to-end">
             <ButtonPrimary
