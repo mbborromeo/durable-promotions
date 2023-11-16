@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import moment from "moment";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
@@ -25,6 +25,7 @@ const filterOptions = [
 export default function Marketing() {
   const [promotions, setPromotions] = useState([]);
   const [filterSelectedIndex, setFilterSelectedIndex] = useState(0); // not used yet
+  const [filterType, setFilterType] = useState(filterOptions[0].type);
 
   /* run initially */
   useEffect(() => {
@@ -61,9 +62,21 @@ export default function Marketing() {
     console.log("onChangeFilter index is:", filterObj.id);
     console.log("onChangeFilter type is:", filterObj.type);
     setFilterSelectedIndex(filterObj.id);
-
-    // filter list of promotions according to type selected
+    setFilterType(filterObj.type);
   };
+
+  // filter list of promotions according to type selected
+  const filteredPromotions = useMemo(() => {
+    if (filterType === "all") {
+      return promotions;
+    } else {
+      const filteredListByType = promotions.filter(
+        (promo) => promo.type === filterType
+      );
+      console.log("filteredListByType", filteredListByType);
+      return filteredListByType;
+    }
+  }, [promotions, filterType]);
 
   return (
     <div className="site-container">
@@ -96,8 +109,8 @@ export default function Marketing() {
           </span>
         </div>
 
-        {promotions.length > 0 &&
-          promotions.map((promo, p) => {
+        {filteredPromotions.length > 0 &&
+          filteredPromotions.map((promo, p) => {
             return (
               <div key={promo.id + "_" + p}>
                 <h1>{promo.type}</h1>
