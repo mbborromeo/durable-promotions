@@ -9,7 +9,7 @@ import mockDataPromotions from "@/app/data.json";
 import filterOptions from "@/app/promotypes.json";
 
 const mockSinglePromo = {
-  company: "Ether Photo Studio 2",
+  company: "Ether and Netherland Collaboration",
   url: "etherphoto.durable.ca",
   paragraph:
     "Second A photography studio that specializes in ethereal emotive images.",
@@ -19,6 +19,7 @@ export default function Marketing() {
   const [promotions, setPromotions] = useState([]);
   const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
   const [filterType, setFilterType] = useState(filterOptions[0].type);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   /* run initially */
   useEffect(() => {
@@ -56,17 +57,34 @@ export default function Marketing() {
     setFilterType(filterObj.type);
   };
 
-  // filter list of promotions according to type selected
-  const filteredPromotions = useMemo(() => {
+  const onChangeSearch = (e) => {
+    console.log("onChangeSearch value", e.target.value);
+    setSearchKeyword(e.target.value);
+  };
+
+  // filter list of promotions according to type selected and keyword from input
+  const searchAndFilteredPromotions = useMemo(() => {
+    // input search on all fields of promotion
+    let promotionsToSearch = promotions;
+    if (searchKeyword !== "") {
+      const keywordTrimmed = searchKeyword.trim();
+      promotionsToSearch = promotions.filter(
+        (promo) =>
+          promo.company.toLowerCase().indexOf(keywordTrimmed.toLowerCase()) !==
+          -1
+      );
+    }
+
+    // dropdown type of promo filter
     if (filterType === "all") {
-      return promotions;
+      return promotionsToSearch;
     } else {
-      const filteredListByType = promotions.filter(
+      const filteredListByType = promotionsToSearch.filter(
         (promo) => promo.type === filterType
       );
       return filteredListByType;
     }
-  }, [promotions, filterType]);
+  }, [promotions, filterType, searchKeyword]);
 
   return (
     <div className="site-container">
@@ -81,6 +99,7 @@ export default function Marketing() {
             placeholder="Search"
             id="promosearch"
             name="promosearch"
+            onChange={onChangeSearch}
           />
 
           <DropDown
@@ -99,8 +118,8 @@ export default function Marketing() {
           </span>
         </div>
 
-        {filteredPromotions.length > 0 &&
-          filteredPromotions.map((promo, p) => {
+        {searchAndFilteredPromotions.length > 0 &&
+          searchAndFilteredPromotions.map((promo, p) => {
             return (
               <div key={promo.id + "_" + p}>
                 <h1>{promo.type}</h1>
