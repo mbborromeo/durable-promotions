@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import moment from "moment";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
 import mockDataPromotions from "@/app/data.json";
+import filterOptions from "@/app/promotypes.json";
 
 const mockSinglePromo = {
   company: "Ether Photo Studio 2",
@@ -16,6 +17,8 @@ const mockSinglePromo = {
 
 export default function Marketing() {
   const [promotions, setPromotions] = useState([]);
+  const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
+  const [filterType, setFilterType] = useState(filterOptions[0].type);
 
   /* run initially */
   useEffect(() => {
@@ -48,6 +51,26 @@ export default function Marketing() {
     persistAndSetPromotions(newPromotionsArray);
   };
 
+  const onChangeFilter = (filterObj) => {
+    console.log("onChangeFilter index is:", filterObj.id);
+    console.log("onChangeFilter type is:", filterObj.type);
+    setFilterSelectedIndex(filterObj.id);
+    setFilterType(filterObj.type);
+  };
+
+  // filter list of promotions according to type selected
+  const filteredPromotions = useMemo(() => {
+    if (filterType === "all") {
+      return promotions;
+    } else {
+      const filteredListByType = promotions.filter(
+        (promo) => promo.type === filterType
+      );
+      console.log("filteredListByType", filteredListByType);
+      return filteredListByType;
+    }
+  }, [promotions, filterType]);
+
   return (
     <div className="site-container">
       <NavBar />
@@ -63,7 +86,11 @@ export default function Marketing() {
             name="promosearch"
           />
 
-          <DropDown />
+          <DropDown
+            options={filterOptions}
+            selectedIndex={filterSelectedIndex}
+            handleOnChange={onChangeFilter}
+          />
 
           <span className="flex-move-to-end">
             <ButtonPrimary
@@ -75,8 +102,8 @@ export default function Marketing() {
           </span>
         </div>
 
-        {promotions.length > 0 &&
-          promotions.map((promo, p) => {
+        {filteredPromotions.length > 0 &&
+          filteredPromotions.map((promo, p) => {
             return (
               <div key={promo.id + "_" + p}>
                 <h1>{promo.type}</h1>
