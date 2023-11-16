@@ -3,10 +3,8 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
-const DropDown = ({ options, value, handleOnChange }) => {
-  const [selectedOption, setSelectedOption] = useState(options[value]);
-
-  console.log("DropDown selectedOption state:", selectedOption);
+const DropDown = ({ options, selectedIndex, handleOnChange }) => {
+  const [selectedOption, setSelectedOption] = useState(options[selectedIndex]);
 
   // Source: https://headlessui.com/react/listbox#binding-objects-as-values
 

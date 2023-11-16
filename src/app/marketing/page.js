@@ -6,6 +6,7 @@ import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
 import mockDataPromotions from "@/app/data.json";
+import filterOptions from "@/app/promotypes.json";
 
 const mockSinglePromo = {
   company: "Ether Photo Studio 2",
@@ -14,17 +15,9 @@ const mockSinglePromo = {
     "Second A photography studio that specializes in ethereal emotive images.",
 };
 
-const filterOptions = [
-  { id: 0, name: "All", type: "all" },
-  { id: 1, name: "Google ad", type: "google" },
-  { id: 2, name: "Facebook post", type: "facebook" },
-  { id: 3, name: "Tweet", type: "twitter" },
-  { id: 4, name: "Email", type: "email" },
-];
-
 export default function Marketing() {
   const [promotions, setPromotions] = useState([]);
-  const [filterSelectedIndex, setFilterSelectedIndex] = useState(0); // not used yet
+  const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
   const [filterType, setFilterType] = useState(filterOptions[0].type);
 
   /* run initially */
@@ -95,7 +88,7 @@ export default function Marketing() {
 
           <DropDown
             options={filterOptions}
-            value={filterSelectedIndex}
+            selectedIndex={filterSelectedIndex}
             handleOnChange={onChangeFilter}
           />
 
