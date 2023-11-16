@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
@@ -15,44 +14,23 @@ const mockSinglePromo = {
 };
 
 export default function Marketing() {
-  // source: https://dev.to/saranshk/react-hooks-and-local-storage-let-s-build-a-todo-app-39g3#the-useeffect-hook
-  const promotionsFromStorage = JSON.parse(
-    localStorage.getItem("localStorage_promotions"),
-  );
-  // let promotionsFromStorage = null;
-  // if (typeof window !== "undefined" && window.localStorage) {
-  //   console.log("browser has localStorage");
-  //   promotionsFromStorage = JSON.parse(
-  //     localStorage.getItem("localStorage_promotions")
-  //   );
-  // }
+  const [promotions, setPromotions] = useState([]);
 
-  const [promotions, setPromotions] = useState(
-    promotionsFromStorage || mockDataPromotions,
-  );
-
-  /* run initially only */
-  // useEffect(() => {
-  //   if (typeof window !== "undefined" && window.localStorage) {
-  //     const promotionsFromStorage = JSON.parse(
-  //       localStorage.getItem("localStorage_promotions")
-  //     );
-  //
-  //     if (promotionsFromStorage && promotionsFromStorage.length > 0) {
-  //       setPromotions(promotionsFromStorage);
-  //     } else {
-  //       setPromotions(mockDataPromotions);
-  //     }
-  //   } else {
-  //     console.log("window or window.localStorage does not exist");
-  //   }
-  // }, []);
-
-  /* run whenever promotions changes */
+  /* run initially */
   useEffect(() => {
-    /* localStorage is a built-in HTML5 object */
-    localStorage.setItem("localStorage_promotions", JSON.stringify(promotions));
-  }, [promotions]);
+    const promotionsFromStorage = JSON.parse(
+      localStorage.getItem("localStorage_promotions")
+    );
+    setPromotions(promotionsFromStorage || mockDataPromotions);
+  }, []);
+
+  const persistAndSetPromotions = (newPromotions) => {
+    localStorage.setItem(
+      "localStorage_promotions",
+      JSON.stringify(newPromotions)
+    );
+    setPromotions(newPromotions);
+  };
 
   const onClickCreate = (typeOfPromo) => {
     const newPromo = mockSinglePromo;
@@ -66,7 +44,7 @@ export default function Marketing() {
     newPromo["id"] = id;
 
     const newPromotionsArray = [...promotions, newPromo];
-    setPromotions(newPromotionsArray);
+    persistAndSetPromotions(newPromotionsArray);
   };
 
   return (
@@ -132,3 +110,4 @@ export default function Marketing() {
     </div>
   );
 }
+
