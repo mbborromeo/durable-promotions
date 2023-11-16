@@ -13,7 +13,6 @@ const DropDown = ({ options, selectedIndex, handleOnChange }) => {
       <Listbox
         value={selectedOption}
         onChange={(optionObj) => {
-          console.log("ListBox optionObj", optionObj);
           setSelectedOption(options[optionObj.id]);
           handleOnChange(optionObj);
         }}

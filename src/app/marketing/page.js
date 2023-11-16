@@ -52,8 +52,6 @@ export default function Marketing() {
   };
 
   const onChangeFilter = (filterObj) => {
-    console.log("onChangeFilter index is:", filterObj.id);
-    console.log("onChangeFilter type is:", filterObj.type);
     setFilterSelectedIndex(filterObj.id);
     setFilterType(filterObj.type);
   };
@@ -66,7 +64,6 @@ export default function Marketing() {
       const filteredListByType = promotions.filter(
         (promo) => promo.type === filterType
       );
-      console.log("filteredListByType", filteredListByType);
       return filteredListByType;
     }
   }, [promotions, filterType]);
