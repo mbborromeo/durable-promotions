@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
+import { Dialog } from "@headlessui/react";
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
@@ -20,6 +21,7 @@ export default function Marketing() {
   const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
   const [filterType, setFilterType] = useState(filterOptions[0].type);
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   /* run initially */
   useEffect(() => {
@@ -38,6 +40,9 @@ export default function Marketing() {
   };
 
   const onClickCreate = (typeOfPromo) => {
+    setIsOpen(true);
+
+    // draft test
     const newPromo = mockSinglePromo;
 
     newPromo["type"] = typeOfPromo;
@@ -94,6 +99,72 @@ export default function Marketing() {
       <NavBar />
 
       <SubNav />
+
+      {/* Create Modal start */}
+      {/* <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+        <Dialog.Panel>
+          <Dialog.Title>Deactivate account</Dialog.Title>
+          <Dialog.Description>
+            This will permanently deactivate your account
+          </Dialog.Description>
+
+          <p>
+            Are you sure you want to deactivate your account? All of your data
+            will be permanently removed. This action cannot be undone.
+          </p>
+
+          <button onClick={() => setIsOpen(false)}>Deactivate</button>
+          <button onClick={() => setIsOpen(false)}>Cancel</button>
+        </Dialog.Panel>
+      </Dialog> */}
+
+      {/* <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="relative z-50"
+      >
+        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+          <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
+            <Dialog.Title>Complete your order</Dialog.Title>
+          </Dialog.Panel>
+        </div>
+      </Dialog> 
+      */}
+
+      <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="relative z-50"
+      >
+        {/* The backdrop, rendered as a fixed sibling to the panel container */}
+        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+        {/* Full-screen scrollable container */}
+        <div className="fixed inset-0 w-screen overflow-y-auto">
+          {/* Container to center the panel */}
+          <div className="flex min-h-full items-center justify-center p-4">
+            {/* The actual dialog panel  */}
+            <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
+              <Dialog.Title>Complete your order</Dialog.Title>
+
+              <div className="flex-wrapper-column">
+                {mockDataPromotions.length > 0 &&
+                  mockDataPromotions.map((promo, p) => {
+                    return (
+                      <PromotionCard
+                        promotion={promo}
+                        index={p}
+                        key={promo.id + "_" + p}
+                      />
+                    );
+                  })}
+              </div>
+            </Dialog.Panel>
+          </div>
+        </div>
+      </Dialog>
+      {/* Create Modal end */}
 
       <main>
         <div className="flex-wrapper-start">

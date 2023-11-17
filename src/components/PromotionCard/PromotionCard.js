@@ -1,17 +1,17 @@
 // import Image from "next/image";
 import moment from "moment";
+import filterOptions from "@/app/promotypes.json";
 import "./PromotionCard.css";
 
 const PromotionCard = ({ promotion, index }) => {
+  const promotionHeading = filterOptions.find(
+    (option) => option.type === promotion.type
+  ).name;
+
   return (
     <div className="card">
       <div className="flex-row">
-        <span className="heading">
-          {promotion.type === "google" && "Google ad"}
-          {promotion.type === "facebook" && "Facebook post"}
-          {promotion.type === "twitter" && "Tweet"}
-          {promotion.type === "email" && "Email"}
-        </span>
+        <span className="heading">{promotionHeading}</span>
         <span className={`badge ${promotion.type}`}></span>
       </div>
       <div className="date">{moment(promotion.timestamp).format("ll")}</div>
