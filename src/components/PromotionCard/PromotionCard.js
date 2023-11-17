@@ -6,7 +6,12 @@ const PromotionCard = ({ promotion, index }) => {
   return (
     <div className="card">
       <div className="flex-row">
-        <span className="heading">{promotion.type}</span>
+        <span className="heading">
+          {promotion.type === "google" && "Google ad"}
+          {promotion.type === "facebook" && "Facebook post"}
+          {promotion.type === "twitter" && "Tweet"}
+          {promotion.type === "email" && "Email"}
+        </span>
         <span className={`badge ${promotion.type}`}></span>
       </div>
       <div className="date">{moment(promotion.timestamp).format("ll")}</div>
