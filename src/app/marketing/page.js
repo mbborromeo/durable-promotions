@@ -7,7 +7,7 @@ import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
 import PromotionCard from "@/components/PromotionCard/PromotionCard";
 import mockDataPromotions from "@/app/data.json";
-import filterOptions from "@/app/promotypes.json";
+import promoTypes from "@/app/promotypes.json";
 
 const mockSinglePromo = {
   company: "Ether and Netherland Collaboration",
@@ -17,6 +17,12 @@ const mockSinglePromo = {
 };
 
 export default function Marketing() {
+  const optionAll = { id: 0, name: "ALIBABA", type: "all" };
+  const filterOptions = promoTypes;
+  filterOptions.unshift(optionAll);
+
+  console.log("filterOptions", filterOptions);
+
   const [promotions, setPromotions] = useState([]);
   const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
   const [filterType, setFilterType] = useState(filterOptions[0].type);
