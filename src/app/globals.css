@@ -376,11 +376,10 @@ p {
 #promosearch {
   background-image: url('/images/icon_search.png');
   background-repeat: no-repeat;
-  background-position: center left 8px;
+  background-position: center left 11px;
   background-size: 20px 20px;
-  padding-left: 40px;
   width: 44px;
-  @apply leading-none;
+  @apply leading-none pl-10 pr-3;
   margin-right: 8px;
   border-radius: 21px; /* round circle on mobile view initially */
   border: 1px solid var(--gray-300);
