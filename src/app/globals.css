@@ -54,6 +54,7 @@ main {
 
 .project-dropdown {
   height: 0;
+  @apply mb-3;
 
   @media (min-width: 768px) {
     height: var(--subnav-height-desktop);
@@ -269,7 +270,7 @@ p {
 }
 
 #subnav h1 {
-  @apply pb-6 md:py-6 md:pr-10 md:mt-0.5;
+  @apply pb-6 md:py-6 md:pr-10 mt-0.5 md:mt-0;
 }
 
 #subnav ul li {
@@ -374,7 +375,6 @@ p {
 }
 
 #promosearch {
-  border: 1px solid blue;
   width: 48%;
   background-image: url('/images/icon_search.png');
   background-repeat: no-repeat;

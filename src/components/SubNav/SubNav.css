@@ -1,0 +1,17 @@
+.icon_back {
+  @apply w-5 h-5 mr-2 mt-1 md:mt-0;
+  display: block;
+  background-image: url("/images/icon_back.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: contain;
+}
+
+.flex-row-always {
+  display: flex;
+  flex-direction: row;
+
+  @media (min-width: 768px) {
+    align-items: center;
+  }
+}
