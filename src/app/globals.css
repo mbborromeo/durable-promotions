@@ -61,7 +61,7 @@ main {
 }
 
 nav {
-  @apply p-2.5 md:p-4 md:pt-5;
+  @apply p-2.5 md:p-4 md:pt-6;
   width: 100%;
   height: var(--navbar-height-mobile);
   position: fixed;
@@ -269,11 +269,7 @@ p {
 }
 
 #subnav h1 {
-  @apply pb-6 md:pt-5 md:pr-10 md:mt-0.5;
-
-  @media (min-width: 768px) {
-    padding-bottom: 0;
-  }
+  @apply pb-6 md:py-6 md:pr-10 md:mt-0.5;
 }
 
 #subnav ul li {
@@ -288,7 +284,7 @@ p {
   user-select: none;
   color: var(--gray-500);
   font-weight: 500;
-  @apply text-sm px-1 pb-2 md:p-4 md:py-6;
+  @apply text-sm px-1 pb-2 md:p-4 md:py-7;
 }
 
 #subnav ul li.on a,
