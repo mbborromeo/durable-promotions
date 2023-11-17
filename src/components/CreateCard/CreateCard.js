@@ -1,20 +1,25 @@
+// import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 import "./CreateCard.css";
 
 const CreateCard = ({ promotion, index }) => {
+  const router = useRouter();
+
+  const handleClickCreate = (ev) => {
+    console.log("handleClickCreate ev", ev);
+    // redirect to /marketing/promotion/create
+    // and pass state to this page: type of promotion
+    router.push("/marketing/promotion/create");
+  };
+
   return (
     <div className="card-create">
-      {/* <div className="flex-row"> */}
       <span className={`badge ${promotion.type}`}></span>
       <span className="heading-create">{promotion.name}</span>
-      {/* </div> */}
-
       <p>{promotion.desc}</p>
 
-      <ButtonPrimary
-        label="Create"
-        // handleClick={}
-      />
+      <ButtonPrimary label="Create" handleClick={handleClickCreate} />
     </div>
   );
 };
