@@ -1,7 +1,7 @@
 import NavBar from "@/components/NavBar/NavBar";
 import SubNav from "@/components/SubNav/SubNav";
 
-export default function Promotion() {
+export default function PromotionCreate() {
   return (
     <div className="site-container">
       <NavBar />
@@ -9,7 +9,7 @@ export default function Promotion() {
       <SubNav />
 
       <main>
-        <h1>View promotion</h1>
+        <h1>Create promotion</h1>
       </main>
     </div>
   );
