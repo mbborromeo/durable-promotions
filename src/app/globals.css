@@ -5,7 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
-  --navbar-width-desktop: 17%; /* 240px */
+  --navbar-width-desktop: 17%;
   --content-width-desktop: 83%;
   --navbar-height-mobile: 64px;
   --subnav-height-desktop: 5vh;
@@ -29,7 +29,6 @@ body {
 } */
 
 .site-container {
-  /* border: 1px solid orange; */
   width: 100%;
   height: 100vh;
   display: block;
@@ -42,10 +41,9 @@ body {
 }
 
 main {
-  /* border: 1px solid blue; */
   @apply p-4 pt-28 md:p-6 md:pt-24; /* padding-right needed so text doesn't overlap scrollbar */
-  /* padding-top: var(--subnav-height-desktop); */
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
+  width: 100%;
   height: max-content;
 
   @media (min-width: 768px) {
@@ -63,7 +61,7 @@ main {
 }
 
 nav {
-  @apply p-2.5 md:p-4 md:pt-5; /* md:pt-6 */
+  @apply p-2.5 md:p-4 md:pt-5;
   width: 100%;
   height: var(--navbar-height-mobile);
   position: fixed;
@@ -326,6 +324,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
   height: auto;
 
   @media (min-width: 768px) {
