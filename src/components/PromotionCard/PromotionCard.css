@@ -14,18 +14,20 @@
 
 .flex-row {
   display: flex;
+  flex-direction: row;;
   justify-content: space-between;
+  align-items: center;
 }
 
 .heading {
   color: var(--gray-700);
   font-weight: 700;
-  @apply pb-4 text-xl;
+  @apply text-xl;
 }
 
 .date {
   color: var(--gray-500);
-  @apply pb-4 text-sm;
+  @apply py-4 text-sm;
 }
 
 .badge {

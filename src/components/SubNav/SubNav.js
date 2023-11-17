@@ -3,6 +3,8 @@ import {
   useSelectedLayoutSegment,
   useSelectedLayoutSegments,
 } from "next/navigation";
+import Link from "next/link";
+import "./SubNav.css";
 
 const SubNav = () => {
   // get route: /marketing/promotion/create
@@ -19,15 +21,25 @@ const SubNav = () => {
       <div className="desktop-border">
         <div className="flex-wrapper">
           <div className="flex-wrapper-left">
-            <>
+            <div className="flex-row-always">
               {currentSegment === "create" ? (
-                <h1>Create</h1>
+                <>
+                  <Link href="/" title="Back">
+                    <span className="icon_back"></span>
+                  </Link>
+                  <h1>Create</h1>
+                </>
               ) : currentSegment === "promotion" ? (
-                <h1>View</h1>
+                <>
+                  <Link href="/" title="Back">
+                    <span className="icon_back"></span>
+                  </Link>
+                  <h1>View</h1>
+                </>
               ) : (
                 <h1>Marketing</h1>
               )}
-            </>
+            </div>
             {segments.length === 0 && (
               <ul>
                 <li className="on">
