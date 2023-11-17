@@ -206,9 +206,16 @@ h1 {
 }
 
 .flex-move-to-end {
+  width: 100%;
+
   @media (min-width: 768px) {
+    width: unset;
     margin-left: auto;
   }
+}
+
+.flex-move-to-end button {
+  @apply w-full mt-4 md:w-40 md:mt-0; 
 }
 
 .show-on-desktop {
@@ -373,23 +380,24 @@ p {
 }
 
 #promosearch {
+  border: 1px solid blue;
+  width: 48%;
   background-image: url('/images/icon_search.png');
   background-repeat: no-repeat;
   background-position: center left 11px;
   background-size: 20px 20px;
-  @apply leading-none w-11 pl-10;
-  margin-right: 8px;
-  border-radius: 21px; /* round circle on mobile view initially */
+  @apply leading-none pl-10;
+  border-radius: 6px; /* 21px */
   border: 1px solid var(--gray-300);
 
   @media (min-width: 768px) {
     width: 22%;
-    border-radius: 6px;
+    margin-right: 8px;
     margin-right: 12px;
   }
 }
 
-#promosearch:focus {
+/* #promosearch:focus {
   width: 100%;
   border-radius: 6px;
   margin-right: 0;
@@ -404,13 +412,19 @@ p {
   }
 }
 
+#promosearch:focus + .width-22 {
+  width: 52%;
+  margin-right: 0;
+
+  @media (min-width: 768px) {
+    width: 22%;
+    margin-right: 12px;
+  }
+} */
+
 .width-22 {
-  width: 35%;
-  /* height: 44px; */
-  /* @apply h-11 md:h-9; */
+  width: 48%; /* 35% */
   height: 100%;
-  margin-right: 8px;
-  /* @apply rounded-md border-gray-300; does not work */
   border-radius: 6px;
   border: 1px solid var(--gray-300);
 
