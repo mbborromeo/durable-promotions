@@ -5,13 +5,20 @@ import {
   useParams,
 } from "next/navigation";
 import Link from "next/link";
+
+import promotions from "@/app/promotypes.json";
+
 import "./SubNav.css";
 
-const SubNav = ({ params }) => {
+const SubNav = () => {
+  const params = useParams();
   console.log("SubNav params", params);
+  console.log("SubNav params.length", params.length);
 
-  const nextParams = useParams();
-  console.log("SubNav nextParams", nextParams);
+  const promotionType =
+    Object.keys(params).length > 0
+      ? promotions.find((option) => option.type === params.slug).name
+      : "";
 
   // get route: /marketing/promotion/create
   // if subpage is /promotion, then change subnav links
@@ -40,7 +47,7 @@ const SubNav = ({ params }) => {
                     {currentSegment === "promotion" ? (
                       <h1>View</h1>
                     ) : (
-                      <h1>Create</h1>
+                      <h1>Create {promotionType}</h1>
                     )}
                   </>
                 )
