@@ -1,7 +1,7 @@
 [
-  { "id": 0, "name": "All", "type": "all" },
-  { "id": 1, "name": "Google ad", "type": "google" },
-  { "id": 2, "name": "Facebook post", "type": "facebook" },
-  { "id": 3, "name": "Tweet", "type": "twitter" },
-  { "id": 4, "name": "Email", "type": "email" }
+  { "id": 0, "type": "all", "name": "All"},
+  { "id": 1, "type": "google", "name": "Google ad", "desc": "A short text ad on Google when someone searches for a related keyword"},
+  { "id": 2, "type": "facebook", "name": "Facebook post", "desc": "A post that includes text and an image that can be shared on your feed"},
+  { "id": 3, "type": "twitter", "name": "Tweet", "desc": "A tweet is a short public message posted on Twitter"},
+  { "id": 4, "type": "email", "name": "Email", "desc": "Send an email to people in your network to promote your business"}
 ]

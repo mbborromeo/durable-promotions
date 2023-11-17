@@ -6,8 +6,10 @@ import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
 import PromotionCard from "@/components/PromotionCard/PromotionCard";
+import CreateCard from "@/components/CreateCard/CreateCard";
 import mockDataPromotions from "@/app/data.json";
 import filterOptions from "@/app/promotypes.json";
+import "./page.css";
 
 const mockSinglePromo = {
   company: "Ether and Netherland Collaboration",
@@ -22,6 +24,8 @@ export default function Marketing() {
   const [filterType, setFilterType] = useState(filterOptions[0].type);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  const promoTypes = filterOptions.filter((option) => option.id !== 0);
 
   /* run initially */
   useEffect(() => {
@@ -100,38 +104,6 @@ export default function Marketing() {
 
       <SubNav />
 
-      {/* Create Modal start */}
-      {/* <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <Dialog.Panel>
-          <Dialog.Title>Deactivate account</Dialog.Title>
-          <Dialog.Description>
-            This will permanently deactivate your account
-          </Dialog.Description>
-
-          <p>
-            Are you sure you want to deactivate your account? All of your data
-            will be permanently removed. This action cannot be undone.
-          </p>
-
-          <button onClick={() => setIsOpen(false)}>Deactivate</button>
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
-        </Dialog.Panel>
-      </Dialog> */}
-
-      {/* <Dialog
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        className="relative z-50"
-      >
-        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
-            <Dialog.Title>Complete your order</Dialog.Title>
-          </Dialog.Panel>
-        </div>
-      </Dialog> 
-      */}
-
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
@@ -145,17 +117,25 @@ export default function Marketing() {
           {/* Container to center the panel */}
           <div className="flex min-h-full items-center justify-center p-4">
             {/* The actual dialog panel  */}
-            <Dialog.Panel className="mx-auto max-w-sm rounded bg-white">
-              <Dialog.Title>Complete your order</Dialog.Title>
+            <Dialog.Panel className="mx-auto max-w-full md:max-w-lg rounded-lg bg-white">
+              <Dialog.Title className="heading-modal">
+                <span>Create promotion</span>
+                <a
+                  href="#"
+                  className="icon_close"
+                  title="close"
+                  onClick={() => setIsOpen(false)}
+                ></a>
+              </Dialog.Title>
 
-              <div className="flex-wrapper-column">
-                {mockDataPromotions.length > 0 &&
-                  mockDataPromotions.map((promo, p) => {
+              <div className="flex-wrapper-column px-6 pb-2">
+                {promoTypes.length > 0 &&
+                  promoTypes.map((promo, p) => {
                     return (
-                      <PromotionCard
+                      <CreateCard
                         promotion={promo}
                         index={p}
-                        key={promo.id + "_" + p}
+                        key={"create_" + promo.type + "_" + p}
                       />
                     );
                   })}
@@ -164,7 +144,6 @@ export default function Marketing() {
           </div>
         </div>
       </Dialog>
-      {/* Create Modal end */}
 
       <main>
         <div className="flex-wrapper-start">
@@ -185,9 +164,7 @@ export default function Marketing() {
           <span className="flex-move-to-end">
             <ButtonPrimary
               label="Create promotion"
-              handleClick={() => {
-                onClickCreate("google");
-              }}
+              handleClick={() => setIsOpen(true)}
             />
           </span>
         </div>
