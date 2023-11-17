@@ -377,8 +377,7 @@ p {
   background-repeat: no-repeat;
   background-position: center left 11px;
   background-size: 20px 20px;
-  width: 44px;
-  @apply leading-none pl-10 pr-3;
+  @apply leading-none w-11 pl-10;
   margin-right: 8px;
   border-radius: 21px; /* round circle on mobile view initially */
   border: 1px solid var(--gray-300);
