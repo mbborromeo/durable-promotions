@@ -5,7 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
-  --navbar-width-desktop: 17%; /* 240px */
+  --navbar-width-desktop: 17%;
   --content-width-desktop: 83%;
   --navbar-height-mobile: 64px;
   --subnav-height-desktop: 5vh;
@@ -29,7 +29,6 @@ body {
 } */
 
 .site-container {
-  /* border: 1px solid orange; */
   width: 100%;
   height: 100vh;
   display: block;
@@ -42,10 +41,9 @@ body {
 }
 
 main {
-  /* border: 1px solid blue; */
   @apply p-4 pt-28 md:p-6 md:pt-24; /* padding-right needed so text doesn't overlap scrollbar */
-  /* padding-top: var(--subnav-height-desktop); */
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
+  width: 100%;
   height: max-content;
 
   @media (min-width: 768px) {
@@ -63,7 +61,7 @@ main {
 }
 
 nav {
-  @apply p-2.5 md:p-4 md:pt-5; /* md:pt-6 */
+  @apply p-2.5 md:p-4 md:pt-5;
   width: 100%;
   height: var(--navbar-height-mobile);
   position: fixed;
@@ -208,9 +206,16 @@ h1 {
 }
 
 .flex-move-to-end {
+  width: 100%;
+
   @media (min-width: 768px) {
+    width: unset;
     margin-left: auto;
   }
+}
+
+.flex-move-to-end button {
+  @apply w-full mt-4 md:w-40 md:mt-0; 
 }
 
 .show-on-desktop {
@@ -326,6 +331,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
   height: auto;
 
   @media (min-width: 768px) {
@@ -374,25 +380,24 @@ p {
 }
 
 #promosearch {
+  border: 1px solid blue;
+  width: 48%;
   background-image: url('/images/icon_search.png');
   background-repeat: no-repeat;
-  background-position: center left 8px;
+  background-position: center left 11px;
   background-size: 20px 20px;
-  padding-left: 40px;
-  width: 44px;
-  @apply leading-none;
-  margin-right: 8px;
-  border-radius: 21px; /* round circle on mobile view initially */
+  @apply leading-none pl-10;
+  border-radius: 6px; /* 21px */
   border: 1px solid var(--gray-300);
 
   @media (min-width: 768px) {
     width: 22%;
-    border-radius: 6px;
+    margin-right: 8px;
     margin-right: 12px;
   }
 }
 
-#promosearch:focus {
+/* #promosearch:focus {
   width: 100%;
   border-radius: 6px;
   margin-right: 0;
@@ -407,13 +412,19 @@ p {
   }
 }
 
+#promosearch:focus + .width-22 {
+  width: 52%;
+  margin-right: 0;
+
+  @media (min-width: 768px) {
+    width: 22%;
+    margin-right: 12px;
+  }
+} */
+
 .width-22 {
-  width: 35%;
-  /* height: 44px; */
-  /* @apply h-11 md:h-9; */
+  width: 48%; /* 35% */
   height: 100%;
-  margin-right: 8px;
-  /* @apply rounded-md border-gray-300; does not work */
   border-radius: 6px;
   border: 1px solid var(--gray-300);
 
