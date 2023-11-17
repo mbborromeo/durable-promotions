@@ -2,11 +2,17 @@
 import {
   useSelectedLayoutSegment,
   useSelectedLayoutSegments,
+  useParams,
 } from "next/navigation";
 import Link from "next/link";
 import "./SubNav.css";
 
-const SubNav = () => {
+const SubNav = ({ params }) => {
+  console.log("SubNav params", params);
+
+  const nextParams = useParams();
+  console.log("SubNav nextParams", nextParams);
+
   // get route: /marketing/promotion/create
   // if subpage is /promotion, then change subnav links
   const parentSegment = useSelectedLayoutSegment();
@@ -22,22 +28,22 @@ const SubNav = () => {
         <div className="flex-wrapper">
           <div className="flex-wrapper-left">
             <div className="flex-row-always">
-              {currentSegment === "create" ? (
-                <>
-                  <Link href="/marketing" title="Back">
-                    <span className="icon_back"></span>
-                  </Link>
-                  <h1>Create</h1>
-                </>
-              ) : currentSegment === "promotion" ? (
-                <>
-                  <Link href="/marketing" title="Back">
-                    <span className="icon_back"></span>
-                  </Link>
-                  <h1>View</h1>
-                </>
-              ) : (
+              {!parentSegment ? (
                 <h1>Marketing</h1>
+              ) : (
+                parentSegment === "promotion" && (
+                  <>
+                    <Link href="/marketing" title="Back">
+                      <span className="icon_back"></span>
+                    </Link>
+
+                    {currentSegment === "promotion" ? (
+                      <h1>View</h1>
+                    ) : (
+                      <h1>Create</h1>
+                    )}
+                  </>
+                )
               )}
             </div>
             {segments.length === 0 && (
