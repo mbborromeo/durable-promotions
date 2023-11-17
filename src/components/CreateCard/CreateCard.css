@@ -20,9 +20,3 @@
   color: var(--gray-700);
   @apply text-sm pt-2;
 }
-
-.heading-create {
-  color: var(--gray-900);
-  font-weight: 600;
-  @apply text-base;
-}

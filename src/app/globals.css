@@ -15,6 +15,7 @@
   --gray-500: #6B7280;
   --gray-700: #374151;
   --gray-900: #111827;
+  --indigo-700: #4330C0;
 }
 
 body {
@@ -42,6 +43,7 @@ body {
 
 /* this tag is used on each page */
 main {
+  border: 1px solid blue;
   @apply p-4 pt-28 md:p-6 md:pt-24; /* padding-right needed so text doesn't overlap scrollbar */
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
   width: 100%;
@@ -238,6 +240,16 @@ h1 {
 
 p {
   margin-bottom: 16px;
+}
+
+.heading-create {
+  color: var(--gray-900);
+  font-weight: 600;
+  @apply text-base;
+}
+
+.border-bottom-lightgrey {
+  border-bottom: 1px solid var(--gray-300);
 }
 
 .desktop-border {
