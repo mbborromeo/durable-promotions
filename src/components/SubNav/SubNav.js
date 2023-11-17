@@ -17,6 +17,7 @@ const SubNav = () => {
               </li>
             </ul>
           </div>
+
           <div className="flex-wrapper-right">
             <a href="#">
               <span className="icon_announcements"></span>
