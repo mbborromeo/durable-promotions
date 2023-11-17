@@ -44,10 +44,10 @@ const SubNav = () => {
                       <span className="icon_back"></span>
                     </Link>
 
-                    {currentSegment === "promotion" ? (
-                      <h1>View</h1>
-                    ) : (
+                    {currentSegment === "create" ? (
                       <h1>Create {promotionType}</h1>
+                    ) : (
+                      <h1>View {promotionType}</h1>
                     )}
                   </>
                 )

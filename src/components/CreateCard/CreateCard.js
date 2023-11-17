@@ -10,7 +10,7 @@ const CreateCard = ({ promotion, index }) => {
     console.log("handleClickCreate ev", ev);
     // redirect to /marketing/promotion/create
     // and pass state to this page: type of promotion
-    router.push(`/marketing/promotion/create/${promotion.type}`);
+    router.push(`/marketing/promotion/${promotion.type}/create`);
   };
 
   return (
