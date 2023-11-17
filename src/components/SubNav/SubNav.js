@@ -24,14 +24,14 @@ const SubNav = () => {
             <div className="flex-row-always">
               {currentSegment === "create" ? (
                 <>
-                  <Link href="/" title="Back">
+                  <Link href="/marketing" title="Back">
                     <span className="icon_back"></span>
                   </Link>
                   <h1>Create</h1>
                 </>
               ) : currentSegment === "promotion" ? (
                 <>
-                  <Link href="/" title="Back">
+                  <Link href="/marketing" title="Back">
                     <span className="icon_back"></span>
                   </Link>
                   <h1>View</h1>
