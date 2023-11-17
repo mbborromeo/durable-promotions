@@ -110,7 +110,10 @@ export default function Marketing() {
         className="relative z-50"
       >
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
-        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur"
+          aria-hidden="true"
+        />
 
         {/* Full-screen scrollable container */}
         <div className="fixed inset-0 w-screen overflow-y-auto">
