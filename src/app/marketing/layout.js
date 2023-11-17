@@ -1,9 +1,9 @@
 import SubNav from "@/components/SubNav/SubNav";
 
-export default function MarketingLayout({ children, params }) {
+export default function MarketingLayout({ children }) {
   return (
     <>
-      <SubNav {...params} />
+      <SubNav />
       {children}
     </>
   );

@@ -1,5 +1,5 @@
 export default function PromotionCreate({ params }) {
-  console.log("PromotionCreate params", params);
+  console.log("PromotionCreate params.slug", params.slug);
 
-  return <main>Creating {params.slug}</main>;
+  return <main>Creating...</main>;
 }

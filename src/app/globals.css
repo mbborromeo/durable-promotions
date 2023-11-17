@@ -40,6 +40,7 @@ body {
   }
 }
 
+/* this tag is used on each page */
 main {
   @apply p-4 pt-28 md:p-6 md:pt-24; /* padding-right needed so text doesn't overlap scrollbar */
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
