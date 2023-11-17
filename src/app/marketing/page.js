@@ -1,8 +1,6 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
 import { Dialog } from "@headlessui/react";
-import NavBar from "@/components/NavBar/NavBar";
-import SubNav from "@/components/SubNav/SubNav";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
 import PromotionCard from "@/components/PromotionCard/PromotionCard";
@@ -99,11 +97,7 @@ export default function Marketing() {
   }, [promotions, filterType, searchKeyword]);
 
   return (
-    <div className="site-container">
-      <NavBar />
-
-      <SubNav />
-
+    <>
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
@@ -185,6 +179,6 @@ export default function Marketing() {
             })}
         </div>
       </main>
-    </div>
+    </>
   );
 }

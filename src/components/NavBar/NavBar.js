@@ -1,6 +1,3 @@
-// import "./style.css";
-// import { Menu } from "@headlessui/react";
-
 const NavBar = () => {
   return (
     <nav>
