@@ -43,7 +43,7 @@ body {
 
 main {
   /* border: 1px solid blue; */
-  @apply p-4 pt-28 md:p-6 md:pt-20; /* padding-right needed so text doesn't overlap scrollbar */
+  @apply p-4 pt-28 md:p-6 md:pt-24; /* padding-right needed so text doesn't overlap scrollbar */
   /* padding-top: var(--subnav-height-desktop); */
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
   height: max-content;
@@ -55,7 +55,6 @@ main {
 }
 
 .project-dropdown {
-  /* border: 1px solid red; */
   height: 0;
 
   @media (min-width: 768px) {
@@ -311,6 +310,7 @@ p {
 }
 
 .flex-wrapper-column {
+  @apply pt-4 md:pt-6;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -327,7 +327,6 @@ p {
   justify-content: space-between;
   flex-wrap: wrap;
   height: auto;
-  border: 1px solid red;
 
   @media (min-width: 768px) {
     justify-content: flex-start;
@@ -380,9 +379,8 @@ p {
   background-position: center left 8px;
   background-size: 20px 20px;
   padding-left: 40px;
-  width: 44px; /* 10% */
-  /* height: 44px; */
-  @apply h-11 md:h-9;
+  width: 44px;
+  @apply leading-none;
   margin-right: 8px;
   border-radius: 21px; /* round circle on mobile view initially */
   border: 1px solid var(--gray-300);
@@ -399,6 +397,7 @@ p {
   border-radius: 6px;
   margin-right: 0;
   margin-bottom: 12px;
+  @apply py-3.5 md:py-2;
 
   @media (min-width: 768px) {
     width: 22%;
