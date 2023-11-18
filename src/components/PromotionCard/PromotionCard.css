@@ -3,7 +3,7 @@
   border-radius: 8px;
   width: 100%;
   margin-bottom: 16px;
-  box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 1px 3px 0px rgba(0, 0, 0, 0.10);
 
   @apply py-6 px-4 md:py-8 px-6;
 
