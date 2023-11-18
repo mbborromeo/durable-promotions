@@ -13,7 +13,6 @@ import "./SubNav.css";
 const SubNav = () => {
   const params = useParams();
   console.log("SubNav params", params);
-  console.log("SubNav params.length", params.length);
 
   const promotionType =
     Object.keys(params).length > 0

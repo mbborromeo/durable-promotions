@@ -4,6 +4,8 @@ import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
+import promotions from "@/app/promotypes.json";
+
 const toneOptions = [
   { id: 1, name: "Professional" },
   { id: 2, name: "Casual" },
@@ -11,6 +13,11 @@ const toneOptions = [
 
 export default function PromotionCreate({ params }) {
   console.log("PromotionCreate params.slug", params.slug);
+
+  const promotionType =
+    Object.keys(params).length > 0
+      ? promotions.find((option) => option.type === params.slug).name
+      : "";
 
   const handleClickCreate = () => {
     console.log("Promo Create handleClickCreate!");
@@ -23,13 +30,15 @@ export default function PromotionCreate({ params }) {
           <div className="panel-header border-bottom-lightgrey">
             <h2 className="heading-create">Details</h2>
             <p>
-              Provide us with the following details and we&apos;ll generate a
-              Google ad for you.
+              Provide us with the following details and we&apos;ll generate a{" "}
+              <b>{promotionType}</b> for you.
             </p>
           </div>
 
           <div className="panel-body">
-            <span className="title">What&apos;s this ad about?</span>
+            <span className="title">
+              What&apos;s this {promotionType} about?
+            </span>
             <textarea></textarea>
 
             <span className="title">Tone of voice</span>
@@ -40,7 +49,7 @@ export default function PromotionCreate({ params }) {
 
           <div className="panel-footer border-top-lightgrey">
             <a href="#" className="icon_open">
-              Learn more about Google ads
+              Learn more about {promotionType}
             </a>
           </div>
         </div>
