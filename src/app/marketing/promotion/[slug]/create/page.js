@@ -23,13 +23,13 @@ export default function PromotionCreate({ params }) {
           <div className="panel-header border-bottom-lightgrey">
             <h2 className="heading-create">Details</h2>
             <p>
-              Provide us with the following details and we'll generate a Google
-              ad for you.
+              Provide us with the following details and we&apos;ll generate a
+              Google ad for you.
             </p>
           </div>
 
           <div className="panel-body">
-            <span className="title">What's this ad about?</span>
+            <span className="title">What&apos;s this ad about?</span>
             <textarea></textarea>
 
             <span className="title">Tone of voice</span>

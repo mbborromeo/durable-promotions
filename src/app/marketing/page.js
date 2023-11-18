@@ -44,7 +44,6 @@ export default function Marketing() {
   const onClickCreate = (typeOfPromo) => {
     setIsOpen(true);
 
-    // draft test
     const newPromo = mockSinglePromo;
 
     newPromo["type"] = typeOfPromo;
