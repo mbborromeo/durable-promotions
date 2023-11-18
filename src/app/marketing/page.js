@@ -44,7 +44,6 @@ export default function Marketing() {
   const onClickCreate = (typeOfPromo) => {
     setIsOpen(true);
 
-    // draft test
     const newPromo = mockSinglePromo;
 
     newPromo["type"] = typeOfPromo;
@@ -98,50 +97,6 @@ export default function Marketing() {
 
   return (
     <>
-      <Dialog
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        className="relative z-50"
-      >
-        {/* The backdrop, rendered as a fixed sibling to the panel container */}
-        <div
-          className="fixed inset-0 bg-black/40 backdrop-blur"
-          aria-hidden="true"
-        />
-
-        {/* Full-screen scrollable container */}
-        <div className="fixed inset-0 w-screen overflow-y-auto">
-          {/* Container to center the panel */}
-          <div className="flex min-h-full items-center justify-center p-4">
-            {/* The actual dialog panel  */}
-            <Dialog.Panel className="mx-auto max-w-full md:max-w-lg rounded-lg bg-white">
-              <Dialog.Title className="heading-modal">
-                <span>Create promotion</span>
-                <a
-                  href="#"
-                  className="icon_close"
-                  title="close"
-                  onClick={() => setIsOpen(false)}
-                ></a>
-              </Dialog.Title>
-
-              <div className="flex-wrapper-column px-6 pb-2">
-                {promoTypes.length > 0 &&
-                  promoTypes.map((promo, p) => {
-                    return (
-                      <CreateCard
-                        promotion={promo}
-                        index={p}
-                        key={"create_" + promo.type + "_" + p}
-                      />
-                    );
-                  })}
-              </div>
-            </Dialog.Panel>
-          </div>
-        </div>
-      </Dialog>
-
       <main>
         <div className="flex-wrapper-start">
           <input
@@ -179,6 +134,45 @@ export default function Marketing() {
             })}
         </div>
       </main>
+
+      {/* Dialog Modal */}
+      <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="relative z-50"
+      >
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur"
+          aria-hidden="true"
+        />
+        <div className="fixed inset-0 w-screen overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4">
+            <Dialog.Panel className="mx-auto max-w-full md:max-w-lg rounded-lg bg-white">
+              <Dialog.Title className="heading-modal">
+                <span>Create promotion</span>
+                <a
+                  href="#"
+                  className="icon_close"
+                  title="close"
+                  onClick={() => setIsOpen(false)}
+                ></a>
+              </Dialog.Title>
+              <div className="flex-wrapper-column px-6 pb-2">
+                {promoTypes.length > 0 &&
+                  promoTypes.map((promo, p) => {
+                    return (
+                      <CreateCard
+                        promotion={promo}
+                        index={p}
+                        key={"create_" + promo.type + "_" + p}
+                      />
+                    );
+                  })}
+              </div>
+            </Dialog.Panel>
+          </div>
+        </div>
+      </Dialog>
     </>
   );
 }

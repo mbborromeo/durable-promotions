@@ -3,7 +3,7 @@ import moment from "moment";
 import filterOptions from "@/app/promotypes.json";
 import "./PromotionCard.css";
 
-const PromotionCard = ({ promotion, index }) => {
+const PromotionCard = ({ promotion }) => {
   const promotionHeading = filterOptions.find(
     (option) => option.type === promotion.type
   ).name;

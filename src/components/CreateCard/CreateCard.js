@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import ButtonPrimary from "../ButtonPrimary/ButtonPrimary";
 import "./CreateCard.css";
 
-const CreateCard = ({ promotion, index }) => {
+const CreateCard = ({ promotion }) => {
   const router = useRouter();
 
   const handleClickCreate = (ev) => {
