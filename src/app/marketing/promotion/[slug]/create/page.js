@@ -1,10 +1,20 @@
 "use client";
-import "./page.css";
+import { useState, useEffect } from "react";
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
-import promotions from "@/app/promotypes.json";
+import "./page.css";
+
+import promotionsTypes from "@/app/promotypes.json";
+import mockDataPromotions from "@/app/data.json";
+
+const mockSinglePromo = {
+  company: "Ether and Netherland Collaboration",
+  url: "netherlandphoto.durable.ca",
+  paragraph:
+    "Netherland photography studio that specializes in ethereal emotive images.",
+};
 
 const toneOptions = [
   { id: 1, name: "Professional" },
@@ -16,11 +26,45 @@ export default function PromotionCreate({ params }) {
 
   const promotionType =
     Object.keys(params).length > 0
-      ? promotions.find((option) => option.type === params.slug).name
+      ? promotionsTypes.find((option) => option.type === params.slug).name
       : "";
 
-  const handleClickCreate = () => {
-    console.log("Promo Create handleClickCreate!");
+  /* originally from /marketing listing page */
+  const [promotions, setPromotions] = useState([]);
+
+  console.log("promotions", promotions);
+
+  useEffect(() => {
+    const promotionsFromStorage = JSON.parse(
+      localStorage.getItem("localStorage_promotions")
+    );
+    setPromotions(promotionsFromStorage || mockDataPromotions);
+  }, []);
+
+  const persistAndSetPromotions = (newPromotions) => {
+    localStorage.setItem(
+      "localStorage_promotions",
+      JSON.stringify(newPromotions)
+    );
+    // when setting state, does this need to happen on parent component?
+    setPromotions(newPromotions);
+  };
+
+  const onClickCreate = (typeOfPromo) => {
+    console.log("PromotionCreate onClickCreate!");
+
+    const newPromo = mockSinglePromo;
+
+    newPromo["type"] = typeOfPromo;
+
+    const timestamp = Date.now();
+    newPromo["timestamp"] = timestamp;
+
+    const id = typeOfPromo + "_" + timestamp;
+    newPromo["id"] = id;
+
+    const newPromotionsArray = [...promotions, newPromo];
+    persistAndSetPromotions(newPromotionsArray);
   };
 
   return (
@@ -31,7 +75,7 @@ export default function PromotionCreate({ params }) {
             <h2 className="heading-create">Details</h2>
             <p>
               Provide us with the following details and we&apos;ll generate a{" "}
-              <b>{promotionType}</b> for you.
+              {promotionType} for you.
             </p>
           </div>
 
@@ -66,7 +110,7 @@ export default function PromotionCreate({ params }) {
         <div className="bottom-bar-inner">
           <ButtonPrimary
             label="Save content"
-            handleClick={() => handleClickCreate()}
+            handleClick={() => onClickCreate(promotionType)}
           />
         </div>
       </div>

@@ -1,9 +1,12 @@
 // import Image from "next/image";
 import moment from "moment";
 import filterOptions from "@/app/promotypes.json";
+
 import "./PromotionCard.css";
 
 const PromotionCard = ({ promotion }) => {
+  console.log("promotion", promotion);
+
   const promotionHeading = filterOptions.find(
     (option) => option.type === promotion.type
   ).name;
