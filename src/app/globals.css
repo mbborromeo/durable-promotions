@@ -251,6 +251,10 @@ p {
   border-bottom: 1px solid var(--gray-300);
 }
 
+.border-top-lightgrey {
+  border-top: 1px solid var(--gray-300);
+}
+
 .desktop-border {
   border-bottom: none;
   @apply md:mx-6;

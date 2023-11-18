@@ -75,7 +75,6 @@
 
 .panel-footer {
   @apply p-6;
-  border-top: 1px solid var(--gray-300);
 
   /* @media (min-width: 768px) {
     border: unset;
@@ -89,4 +88,35 @@
   background-position: center right;
   background-size: 24px 24px;
   color: var(--indigo-700);
+}
+
+.bottom-bar {
+  @apply py-4 mt-4; /* md:mt-8 */
+
+  /* width: var(--content-width-desktop); */
+  width: 100%;
+
+  /* background-color: #FFF; */
+  background-color: var(--gray-100);
+
+  @media (min-width: 768px) {
+    background-color: unset;
+    bottom: 0;
+    /* border-top: unset; */
+  }
+}
+
+.bottom-bar-inner {
+  /* position: relative; */
+  display: flex;
+  justify-content: end;
+  
+  /* @media (min-width: 768px) {
+  } */
+}
+
+.bottom-bar-inner button {
+  @apply w-32;
+  /* position: absolute;
+  right: 0; */
 }

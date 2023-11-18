@@ -1,5 +1,7 @@
+"use client";
 import "./page.css";
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
+import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
 const toneOptions = [
@@ -9,6 +11,10 @@ const toneOptions = [
 
 export default function PromotionCreate({ params }) {
   console.log("PromotionCreate params.slug", params.slug);
+
+  const handleClickCreate = () => {
+    console.log("Promo Create handleClickCreate!");
+  };
 
   return (
     <main>
@@ -32,7 +38,7 @@ export default function PromotionCreate({ params }) {
             <ButtonSecondary label="Regenerate" />
           </div>
 
-          <div className="panel-footer">
+          <div className="panel-footer border-top-lightgrey">
             <a href="#" className="icon_open">
               Learn more about Google ads
             </a>
@@ -43,7 +49,16 @@ export default function PromotionCreate({ params }) {
           <div className="panel-header border-bottom-lightgrey">
             <h2 className="heading-create">Preview</h2>
           </div>
-          <div className="panel-body">dasdasfsd sdvsd</div>
+          <div className="panel-body">...generated content appears here</div>
+        </div>
+      </div>
+
+      <div className="bottom-bar border-top-lightgrey">
+        <div className="bottom-bar-inner">
+          <ButtonPrimary
+            label="Save content"
+            handleClick={() => handleClickCreate()}
+          />
         </div>
       </div>
     </main>
