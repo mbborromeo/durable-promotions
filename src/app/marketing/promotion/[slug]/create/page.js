@@ -1,5 +1,6 @@
 import "./page.css";
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
+import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
 const toneOptions = [
   { id: 1, name: "Professional" },
@@ -13,7 +14,7 @@ export default function PromotionCreate({ params }) {
     <main>
       <div className="flex-create-wrapper">
         <div className="panel left">
-          <div className="border-bottom-lightgrey panel-header">
+          <div className="panel-header border-bottom-lightgrey">
             <h2 className="heading-create">Details</h2>
             <p>
               Provide us with the following details and we'll generate a Google
@@ -26,16 +27,15 @@ export default function PromotionCreate({ params }) {
             <textarea></textarea>
 
             <span className="title">Tone of voice</span>
-            {/* <select>
-              <option>Professional</option>
-            </select> */}
             <DropDownBasic options={toneOptions} />
 
-            <button>Regenerate</button>
+            <ButtonSecondary label="Regenerate" />
           </div>
 
           <div className="panel-footer">
-            <a href="#">Learn more about Google ads</a>
+            <a href="#" className="icon_open">
+              Learn more about Google ads
+            </a>
           </div>
         </div>
 

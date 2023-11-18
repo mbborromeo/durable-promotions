@@ -1,0 +1,4 @@
+.btn-secondary {
+  @apply mt-6;
+  margin-left: auto; /* align right */
+}

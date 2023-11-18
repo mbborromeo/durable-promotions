@@ -43,7 +43,6 @@ body {
 
 /* this tag is used on each page */
 main {
-  border: 1px solid blue;
   @apply p-4 pt-28 md:p-6 md:pt-24; /* padding-right needed so text doesn't overlap scrollbar */
   padding-bottom: var(--navbar-height-mobile); /* padding-bottom needed since navbar is fixed to bottom */
   width: 100%;
@@ -292,6 +291,10 @@ p {
   @apply pr-6 md:pr-3;
 }
 
+#subnav ul li:last-child {
+  padding-right: 0;
+}
+
 #subnav ul li a {
   display: block;
   height: 100%;
@@ -341,6 +344,7 @@ p {
   flex-wrap: wrap;
   width: 100%;
   height: auto;
+  
 
   @media (min-width: 768px) {
     justify-content: flex-start;
