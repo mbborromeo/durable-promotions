@@ -31,14 +31,12 @@ export default function PromotionCreate({ params }) {
             <h2 className="heading-create">Details</h2>
             <p>
               Provide us with the following details and we&apos;ll generate a{" "}
-              <b>{promotionType}</b> for you.
+              {promotionType} for you.
             </p>
           </div>
 
           <div className="panel-body">
-            <span className="title">
-              What&apos;s this {promotionType} about?
-            </span>
+            <span className="title">What&apos;s this ad about?</span>
             <textarea></textarea>
 
             <span className="title">Tone of voice</span>
@@ -58,7 +56,7 @@ export default function PromotionCreate({ params }) {
           <div className="panel-header border-bottom-lightgrey">
             <h2 className="heading-create">Preview</h2>
           </div>
-          <div className="panel-body">...generated content appears here</div>
+          <div className="panel-body">...generated content</div>
         </div>
       </div>
 
