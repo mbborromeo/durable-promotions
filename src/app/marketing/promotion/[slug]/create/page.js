@@ -39,7 +39,12 @@ export default function PromotionCreate({ params }) {
           </div>
         </div>
 
-        <div className="panel main">Lorem ipsom...</div>
+        <div className="panel main">
+          <div className="panel-header border-bottom-lightgrey">
+            <h2 className="heading-create">Preview</h2>
+          </div>
+          <div className="panel-body">dasdasfsd sdvsd</div>
+        </div>
       </div>
     </main>
   );
