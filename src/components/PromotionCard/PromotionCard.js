@@ -1,3 +1,4 @@
+import Link from "next/link";
 // import Image from "next/image";
 import moment from "moment";
 import filterOptions from "@/app/promotypes.json";
@@ -22,9 +23,9 @@ const PromotionCard = ({ promotion }) => {
         />
       </div>
       <div className="links">
-        <a href="#" className="view">
+        <Link href={`/marketing/promotion/${promotion.type}/`} className="view">
           View
-        </a>
+        </Link>
         <a href="#" className="more">
           More
         </a>
