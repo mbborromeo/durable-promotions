@@ -21,9 +21,6 @@ const PromotionCard = ({ promotion }) => {
           alt={`preview thumb ${promotion.type}`}
         />
       </div>
-      {/* <div>{promotion.url}</div>
-      <h2>{promotion.company}</h2>
-      <p>{promotion.paragraph}</p> */}
       <div className="links">
         <a href="#" className="view">
           View
