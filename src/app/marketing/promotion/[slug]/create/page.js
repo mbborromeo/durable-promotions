@@ -1,6 +1,5 @@
 "use client";
 import { useContext } from "react";
-import "./page.css";
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
@@ -8,6 +7,8 @@ import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 import { PromotionsContext } from "@/utils/store";
 
 import promotionTypes from "@/app/promotypes.json";
+
+import "../page.css";
 
 const mockSinglePromo = {
   company: "Ether and Netherland Collaboration",
