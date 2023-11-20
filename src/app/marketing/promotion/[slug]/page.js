@@ -56,7 +56,12 @@ export default function Promotion({ params }) {
               <div className="panel-header border-bottom-lightgrey">
                 <h2 className="heading-create">Preview</h2>
               </div>
-              <div className="panel-body">...generated content</div>
+              <div className="panel-body view">
+                <img
+                  src={`/images/preview_${promotion.type}.png`}
+                  alt={`preview thumb ${promotion.type}`}
+                />
+              </div>
             </div>
           </div>
 
