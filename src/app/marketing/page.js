@@ -9,7 +9,6 @@ import filterOptions from "@/app/promotypes.json";
 import "./page.css";
 
 export default function Marketing() {
-  // const [promotions, setPromotions] = useState([]);
   const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
   const [filterType, setFilterType] = useState(filterOptions[0].type);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -17,13 +16,6 @@ export default function Marketing() {
 
   const promoTypes = filterOptions.filter((option) => option.id !== 0);
 
-  /* run initially */
-  // useEffect(() => {
-  //   const promotionsFromStorage = JSON.parse(
-  //     localStorage.getItem("localStorage_promotions")
-  //   );
-  //   setPromotions(promotionsFromStorage || mockDataPromotions);
-  // }, []);
   let { promotions } = useContext(PromotionsContext);
 
   const onChangeFilter = (filterObj) => {
