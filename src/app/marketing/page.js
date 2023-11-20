@@ -6,7 +6,7 @@ import DropDown from "@/components/DropDown/DropDown";
 import PromotionCard from "@/components/PromotionCard/PromotionCard";
 import CreateCard from "@/components/CreateCard/CreateCard";
 
-import PromotionsContext from "@/app/marketing/layout";
+import { PromotionsContext } from "@/utils/store";
 
 import filterOptions from "@/app/promotypes.json";
 import "./page.css";

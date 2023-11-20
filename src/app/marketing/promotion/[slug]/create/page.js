@@ -5,7 +5,7 @@ import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
-import PromotionsContext from "@/app/marketing/layout";
+import { PromotionsContext } from "@/utils/store";
 
 import promotionTypes from "@/app/promotypes.json";
 
