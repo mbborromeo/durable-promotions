@@ -1,16 +1,15 @@
 "use client";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo, useContext } from "react";
 import { Dialog } from "@headlessui/react";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
 import PromotionCard from "@/components/PromotionCard/PromotionCard";
 import CreateCard from "@/components/CreateCard/CreateCard";
-import mockDataPromotions from "@/app/data.json";
 import filterOptions from "@/app/promotypes.json";
 import "./page.css";
 
 export default function Marketing() {
-  const [promotions, setPromotions] = useState([]);
+  // const [promotions, setPromotions] = useState([]);
   const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
   const [filterType, setFilterType] = useState(filterOptions[0].type);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -19,12 +18,13 @@ export default function Marketing() {
   const promoTypes = filterOptions.filter((option) => option.id !== 0);
 
   /* run initially */
-  useEffect(() => {
-    const promotionsFromStorage = JSON.parse(
-      localStorage.getItem("localStorage_promotions")
-    );
-    setPromotions(promotionsFromStorage || mockDataPromotions);
-  }, []);
+  // useEffect(() => {
+  //   const promotionsFromStorage = JSON.parse(
+  //     localStorage.getItem("localStorage_promotions")
+  //   );
+  //   setPromotions(promotionsFromStorage || mockDataPromotions);
+  // }, []);
+  let { promotions } = useContext(PromotionsContext);
 
   const onChangeFilter = (filterObj) => {
     setFilterSelectedIndex(filterObj.id);
