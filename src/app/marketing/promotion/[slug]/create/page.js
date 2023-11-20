@@ -28,7 +28,6 @@ export default function PromotionCreate({ params }) {
   const promotion =
     Object.keys(params).length > 0 &&
     promotionTypes.find((option) => option.type === params.slug);
-  console.log("PromotionCreate promotion:::", promotion);
 
   const persistAndSetPromotions = (newPromotions) => {
     localStorage.setItem(
@@ -39,7 +38,7 @@ export default function PromotionCreate({ params }) {
   };
 
   const handleClickCreate = (typeOfPromo) => {
-    const newPromo = mockSinglePromo;
+    const newPromo = { ...mockSinglePromo }; // clone object shallow copy
 
     newPromo["type"] = typeOfPromo;
 

@@ -38,9 +38,9 @@ const SubNav = () => {
               ) : (
                 parentSegment === "promotion" && (
                   <>
-                    <a href="/marketing" title="Back">
+                    <Link href="/marketing" title="Back">
                       <span className="icon_back"></span>
-                    </a>
+                    </Link>
 
                     {currentSegment === "create" ? (
                       <h1>Create {promotionType}</h1>
