@@ -1,10 +1,18 @@
 "use client";
+import { useContext } from "react";
 import "./page.css";
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
-import promotions from "@/app/promotypes.json";
+import promotionTypes from "@/app/promotypes.json";
+
+const mockSinglePromo = {
+  company: "Ether and Netherland Collaboration",
+  url: "netherlandphoto.durable.ca",
+  paragraph:
+    "Netherland photography studio that specializes in ethereal emotive images.",
+};
 
 const toneOptions = [
   { id: 1, name: "Professional" },
@@ -14,13 +22,36 @@ const toneOptions = [
 export default function PromotionCreate({ params }) {
   console.log("PromotionCreate params.slug", params.slug);
 
+  let { promotions, setPromotions } = useContext(PromotionsContext);
+
   const promotionType =
     Object.keys(params).length > 0
-      ? promotions.find((option) => option.type === params.slug).name
+      ? promotionTypes.find((option) => option.type === params.slug).name
       : "";
 
-  const handleClickCreate = () => {
+  const persistAndSetPromotions = (newPromotions) => {
+    localStorage.setItem(
+      "localStorage_promotions",
+      JSON.stringify(newPromotions)
+    );
+    setPromotions(newPromotions);
+  };
+
+  const handleClickCreate = (typeOfPromo) => {
     console.log("Promo Create handleClickCreate!");
+
+    const newPromo = mockSinglePromo;
+
+    newPromo["type"] = typeOfPromo;
+
+    const timestamp = Date.now();
+    newPromo["timestamp"] = timestamp;
+
+    const id = typeOfPromo + "_" + timestamp;
+    newPromo["id"] = id;
+
+    const newPromotionsArray = [...promotions, newPromo];
+    persistAndSetPromotions(newPromotionsArray);
   };
 
   return (
@@ -64,7 +95,7 @@ export default function PromotionCreate({ params }) {
         <div className="bottom-bar-inner">
           <ButtonPrimary
             label="Save content"
-            handleClick={() => handleClickCreate()}
+            handleClick={() => handleClickCreate(promotionType)}
           />
         </div>
       </div>

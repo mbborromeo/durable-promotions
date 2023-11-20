@@ -9,13 +9,6 @@ import mockDataPromotions from "@/app/data.json";
 import filterOptions from "@/app/promotypes.json";
 import "./page.css";
 
-const mockSinglePromo = {
-  company: "Ether and Netherland Collaboration",
-  url: "netherlandphoto.durable.ca",
-  paragraph:
-    "Netherland photography studio that specializes in ethereal emotive images.",
-};
-
 export default function Marketing() {
   const [promotions, setPromotions] = useState([]);
   const [filterSelectedIndex, setFilterSelectedIndex] = useState(0);
@@ -32,31 +25,6 @@ export default function Marketing() {
     );
     setPromotions(promotionsFromStorage || mockDataPromotions);
   }, []);
-
-  const persistAndSetPromotions = (newPromotions) => {
-    localStorage.setItem(
-      "localStorage_promotions",
-      JSON.stringify(newPromotions)
-    );
-    setPromotions(newPromotions);
-  };
-
-  const onClickCreate = (typeOfPromo) => {
-    setIsOpen(true);
-
-    const newPromo = mockSinglePromo;
-
-    newPromo["type"] = typeOfPromo;
-
-    const timestamp = Date.now();
-    newPromo["timestamp"] = timestamp;
-
-    const id = typeOfPromo + "_" + timestamp;
-    newPromo["id"] = id;
-
-    const newPromotionsArray = [...promotions, newPromo];
-    persistAndSetPromotions(newPromotionsArray);
-  };
 
   const onChangeFilter = (filterObj) => {
     setFilterSelectedIndex(filterObj.id);
