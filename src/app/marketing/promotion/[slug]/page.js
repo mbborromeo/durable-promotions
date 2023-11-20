@@ -21,7 +21,11 @@ export default function Promotion({ params }) {
   return (
     <main>
       Viewing {promoType} ID: {id}
-      {/* <p>{promotion.paragraph}</p> */}
+      {promotion && (
+        <>
+          <p>{promotion.paragraph}</p>
+        </>
+      )}
     </main>
   );
 }
