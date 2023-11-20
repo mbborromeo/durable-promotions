@@ -23,11 +23,12 @@ const toneOptions = [
 
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
-  console.log("PromotionCreate context", promotions);
+  console.log("PromotionCreate context::", promotions);
 
   const promotion =
     Object.keys(params).length > 0 &&
     promotionTypes.find((option) => option.type === params.slug);
+  console.log("PromotionCreate promotion:::", promotion);
 
   const persistAndSetPromotions = (newPromotions) => {
     localStorage.setItem(
