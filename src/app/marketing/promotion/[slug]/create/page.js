@@ -22,10 +22,8 @@ const toneOptions = [
 ];
 
 export default function PromotionCreate({ params }) {
-  console.log("PromotionCreate params.slug", params.slug);
-
   const { promotions, setPromotions } = useContext(PromotionsContext);
-  console.log("create page promotions context", promotions);
+  console.log("PromotionCreate context", promotions);
 
   const promotion =
     Object.keys(params).length > 0 &&
@@ -40,8 +38,6 @@ export default function PromotionCreate({ params }) {
   };
 
   const handleClickCreate = (typeOfPromo) => {
-    console.log("Promo Create handleClickCreate!");
-
     const newPromo = mockSinglePromo;
 
     newPromo["type"] = typeOfPromo;

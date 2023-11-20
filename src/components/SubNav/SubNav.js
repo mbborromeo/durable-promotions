@@ -12,7 +12,6 @@ import "./SubNav.css";
 
 const SubNav = () => {
   const params = useParams();
-  console.log("SubNav params", params);
 
   const promotionType =
     Object.keys(params).length > 0
@@ -24,9 +23,9 @@ const SubNav = () => {
   const parentSegment = useSelectedLayoutSegment();
   const segments = useSelectedLayoutSegments();
   const currentSegment = segments[segments.length - 1];
-  console.log("segments", segments);
-  console.log("SubNav url parentSegment:", parentSegment);
-  console.log("currentSegment", currentSegment);
+  // console.log("segments", segments);
+  // console.log("SubNav url parentSegment:", parentSegment);
+  // console.log("currentSegment", currentSegment);
 
   return (
     <div id="subnav">
