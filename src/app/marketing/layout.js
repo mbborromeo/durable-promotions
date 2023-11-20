@@ -4,10 +4,10 @@ import { createContext, useState, useEffect } from "react";
 import SubNav from "@/components/SubNav/SubNav";
 import mockDataPromotions from "@/app/data.json";
 
+const PromotionsContext = createContext();
+
 export default function MarketingLayout({ children }) {
   const [promotions, setPromotions] = useState([]);
-
-  const PromotionsContext = createContext();
 
   /* run initially */
   useEffect(() => {
