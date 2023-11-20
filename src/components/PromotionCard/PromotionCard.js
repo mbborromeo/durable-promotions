@@ -25,7 +25,10 @@ const PromotionCard = ({ promotion }) => {
         />
       </div>
       <div className="links">
-        <Link href={`/marketing/promotion/${promotion.type}/`} className="view">
+        <Link
+          href={`/marketing/promotion/${promotion.type}?id=${promotion.id}`}
+          className="view"
+        >
           View
         </Link>
         <a href="#" className="more">
