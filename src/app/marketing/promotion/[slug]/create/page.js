@@ -5,6 +5,8 @@ import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
+import PromotionsContext from "@/app/marketing/layout";
+
 import promotionTypes from "@/app/promotypes.json";
 
 const mockSinglePromo = {
@@ -22,7 +24,8 @@ const toneOptions = [
 export default function PromotionCreate({ params }) {
   console.log("PromotionCreate params.slug", params.slug);
 
-  let { promotions, setPromotions } = useContext(PromotionsContext);
+  const { promotions, setPromotions } = useContext(PromotionsContext);
+  console.log("create page promotions context", promotions);
 
   const promotionType =
     Object.keys(params).length > 0

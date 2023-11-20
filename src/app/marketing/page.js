@@ -5,6 +5,9 @@ import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDown from "@/components/DropDown/DropDown";
 import PromotionCard from "@/components/PromotionCard/PromotionCard";
 import CreateCard from "@/components/CreateCard/CreateCard";
+
+import PromotionsContext from "@/app/marketing/layout";
+
 import filterOptions from "@/app/promotypes.json";
 import "./page.css";
 
@@ -16,7 +19,7 @@ export default function Marketing() {
 
   const promoTypes = filterOptions.filter((option) => option.id !== 0);
 
-  let { promotions } = useContext(PromotionsContext);
+  const { promotions } = useContext(PromotionsContext);
 
   const onChangeFilter = (filterObj) => {
     setFilterSelectedIndex(filterObj.id);

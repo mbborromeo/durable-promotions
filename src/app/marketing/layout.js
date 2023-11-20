@@ -1,10 +1,11 @@
 "use client";
-import { createContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import SubNav from "@/components/SubNav/SubNav";
-import mockDataPromotions from "@/app/data.json";
 
-const PromotionsContext = createContext();
+import { PromotionsContext } from "@/utils/store";
+
+import mockDataPromotions from "@/app/data.json";
 
 export default function MarketingLayout({ children }) {
   const [promotions, setPromotions] = useState([]);
