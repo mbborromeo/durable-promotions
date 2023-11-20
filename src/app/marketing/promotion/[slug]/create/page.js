@@ -1,10 +1,20 @@
 "use client";
+import { useContext } from "react";
 import "./page.css";
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
-import promotions from "@/app/promotypes.json";
+import { PromotionsContext } from "@/utils/store";
+
+import promotionTypes from "@/app/promotypes.json";
+
+const mockSinglePromo = {
+  company: "Ether and Netherland Collaboration",
+  url: "netherlandphoto.durable.ca",
+  paragraph:
+    "Netherland photography studio that specializes in ethereal emotive images.",
+};
 
 const toneOptions = [
   { id: 1, name: "Professional" },
@@ -14,13 +24,36 @@ const toneOptions = [
 export default function PromotionCreate({ params }) {
   console.log("PromotionCreate params.slug", params.slug);
 
-  const promotionType =
-    Object.keys(params).length > 0
-      ? promotions.find((option) => option.type === params.slug).name
-      : "";
+  const { promotions, setPromotions } = useContext(PromotionsContext);
+  console.log("create page promotions context", promotions);
 
-  const handleClickCreate = () => {
+  const promotion =
+    Object.keys(params).length > 0 &&
+    promotionTypes.find((option) => option.type === params.slug);
+
+  const persistAndSetPromotions = (newPromotions) => {
+    localStorage.setItem(
+      "localStorage_promotions",
+      JSON.stringify(newPromotions)
+    );
+    setPromotions(newPromotions);
+  };
+
+  const handleClickCreate = (typeOfPromo) => {
     console.log("Promo Create handleClickCreate!");
+
+    const newPromo = mockSinglePromo;
+
+    newPromo["type"] = typeOfPromo;
+
+    const timestamp = Date.now();
+    newPromo["timestamp"] = timestamp;
+
+    const id = typeOfPromo + "_" + timestamp;
+    newPromo["id"] = id;
+
+    const newPromotionsArray = [...promotions, newPromo];
+    persistAndSetPromotions(newPromotionsArray);
   };
 
   return (
@@ -31,7 +64,7 @@ export default function PromotionCreate({ params }) {
             <h2 className="heading-create">Details</h2>
             <p>
               Provide us with the following details and we&apos;ll generate a{" "}
-              {promotionType} for you.
+              {promotion.name} for you.
             </p>
           </div>
 
@@ -47,7 +80,7 @@ export default function PromotionCreate({ params }) {
 
           <div className="panel-footer border-top-lightgrey">
             <a href="#" className="icon_open">
-              Learn more about {promotionType}
+              Learn more about {promotion.name}
             </a>
           </div>
         </div>
@@ -64,7 +97,7 @@ export default function PromotionCreate({ params }) {
         <div className="bottom-bar-inner">
           <ButtonPrimary
             label="Save content"
-            handleClick={() => handleClickCreate()}
+            handleClick={() => handleClickCreate(promotion.type)}
           />
         </div>
       </div>
