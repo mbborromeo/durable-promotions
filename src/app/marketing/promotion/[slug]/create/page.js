@@ -23,7 +23,7 @@ const toneOptions = [
 
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
-  console.log("PromotionCreate context", promotions);
+  console.log("PromotionCreate context::", promotions);
 
   const promotion =
     Object.keys(params).length > 0 &&
@@ -38,7 +38,7 @@ export default function PromotionCreate({ params }) {
   };
 
   const handleClickCreate = (typeOfPromo) => {
-    const newPromo = mockSinglePromo;
+    const newPromo = { ...mockSinglePromo }; // clone object shallow copy
 
     newPromo["type"] = typeOfPromo;
 

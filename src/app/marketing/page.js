@@ -20,6 +20,7 @@ export default function Marketing() {
   const promoTypes = filterOptions.filter((option) => option.id !== 0);
 
   const { promotions } = useContext(PromotionsContext);
+  console.log("Marketing: promotions", promotions);
 
   const onChangeFilter = (filterObj) => {
     setFilterSelectedIndex(filterObj.id);
@@ -87,7 +88,7 @@ export default function Marketing() {
         <div className="flex-wrapper-column">
           {searchAndFilteredPromotions.length > 0 &&
             searchAndFilteredPromotions.map((promo, p) => {
-              console.log("Marketing promo", promo);
+              // console.log("Marketing promo", promo);
               return (
                 <PromotionCard
                   promotion={promo}
