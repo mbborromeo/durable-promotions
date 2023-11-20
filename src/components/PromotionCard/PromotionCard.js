@@ -5,14 +5,10 @@ import filterOptions from "@/app/promotypes.json";
 import "./PromotionCard.css";
 
 const PromotionCard = ({ promotion }) => {
-  // console.log("PromotionCard --------- promotion", promotion);
   const promoTypes = filterOptions.filter((option) => option.id !== 0);
-  // console.log("promoTypes", promoTypes);
   const promotionObject = promoTypes.find((option) => {
-    // console.log("option", option);
     return promotion.type === option.type;
   });
-  // console.log("promotionObject", promotionObject);
   const promotionHeading = promotionObject.name;
 
   return (
