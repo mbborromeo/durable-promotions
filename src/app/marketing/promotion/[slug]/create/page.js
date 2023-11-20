@@ -27,10 +27,9 @@ export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
   console.log("create page promotions context", promotions);
 
-  const promotionType =
-    Object.keys(params).length > 0
-      ? promotionTypes.find((option) => option.type === params.slug).name
-      : "";
+  const promotion =
+    Object.keys(params).length > 0 &&
+    promotionTypes.find((option) => option.type === params.slug);
 
   const persistAndSetPromotions = (newPromotions) => {
     localStorage.setItem(
@@ -65,7 +64,7 @@ export default function PromotionCreate({ params }) {
             <h2 className="heading-create">Details</h2>
             <p>
               Provide us with the following details and we&apos;ll generate a{" "}
-              {promotionType} for you.
+              {promotion.name} for you.
             </p>
           </div>
 
@@ -81,7 +80,7 @@ export default function PromotionCreate({ params }) {
 
           <div className="panel-footer border-top-lightgrey">
             <a href="#" className="icon_open">
-              Learn more about {promotionType}
+              Learn more about {promotion.name}
             </a>
           </div>
         </div>
@@ -98,7 +97,7 @@ export default function PromotionCreate({ params }) {
         <div className="bottom-bar-inner">
           <ButtonPrimary
             label="Save content"
-            handleClick={() => handleClickCreate(promotionType)}
+            handleClick={() => handleClickCreate(promotion.type)}
           />
         </div>
       </div>
