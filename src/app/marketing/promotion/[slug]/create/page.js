@@ -1,5 +1,7 @@
 "use client";
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
+
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
@@ -26,6 +28,8 @@ export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
   console.log("PromotionCreate context::", promotions);
 
+  const router = useRouter();
+
   const promotion =
     Object.keys(params).length > 0 &&
     promotionTypes.find((option) => option.type === params.slug);
@@ -51,6 +55,8 @@ export default function PromotionCreate({ params }) {
 
     const newPromotionsArray = [...promotions, newPromo];
     persistAndSetPromotions(newPromotionsArray);
+
+    router.push("/marketing");
   };
 
   return (
