@@ -1,5 +1,5 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
@@ -26,7 +26,7 @@ const toneOptions = [
 
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
-  console.log("PromotionCreate context::", promotions);
+  const { paragraph, setParagraph } = useState("");
 
   const router = useRouter();
 
@@ -53,10 +53,16 @@ export default function PromotionCreate({ params }) {
     const id = typeOfPromo + "_" + timestamp;
     newPromo["id"] = id;
 
+    newPromo["paragraph"] = paragraph;
+
     const newPromotionsArray = [...promotions, newPromo];
     persistAndSetPromotions(newPromotionsArray);
 
     router.push("/marketing");
+  };
+
+  const onChangeTextArea = (ev) => {
+    setParagraph(ev.target.value);
   };
 
   return (
@@ -73,7 +79,7 @@ export default function PromotionCreate({ params }) {
 
           <div className="panel-body">
             <span className="title">What&apos;s this ad about?</span>
-            <textarea></textarea>
+            <textarea onChange={onChangeTextArea}></textarea>
 
             <span className="title">Tone of voice</span>
             <DropDownBasic options={toneOptions} />
