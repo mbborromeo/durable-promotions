@@ -9,8 +9,17 @@
 
   @media (min-width: 768px) {
     width: 32%;
+    /* margin-left: 1%; */
   }
 }
+/* .card:first-child {
+  margin-left: 0;
+} */
+
+/* so it's not at end */
+/* .card:last-child {
+  margin-right: auto; 
+} */
 
 .flex-row {
   display: flex;
