@@ -26,7 +26,7 @@ const toneOptions = [
 
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
-  const { paragraph, setParagraph } = useState("");
+  const [paragraph, setParagraph] = useState("");
 
   const router = useRouter();
 
@@ -79,7 +79,7 @@ export default function PromotionCreate({ params }) {
 
           <div className="panel-body">
             <span className="title">What&apos;s this ad about?</span>
-            <textarea onChange={onChangeTextArea}></textarea>
+            <textarea value={paragraph} onChange={onChangeTextArea}></textarea>
 
             <span className="title">Tone of voice</span>
             <DropDownBasic options={toneOptions} />
