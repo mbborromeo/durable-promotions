@@ -1,0 +1,147 @@
+.project-dropdown {
+  height: 0;
+  @apply mb-3;
+
+  @media (min-width: 768px) {
+    height: var(--subnav-height-desktop);
+  }
+}
+
+nav {
+  @apply p-2.5 md:p-4 md:pt-6;
+  width: 100%;
+  height: var(--navbar-height-mobile);
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  background-color: #FFF;
+  box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.10);
+
+  @media (min-width: 768px) {
+    width: var(--navbar-width-desktop);
+    height: 100vh;
+    left: 0;
+    bottom: unset;
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.10);
+  }
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    height: var(--nav-ul-height-desktop);
+  }
+}
+
+nav ul li {
+  display: inline-block;
+  width: 16%;
+  height: 44px;
+  margin-left: 5%;
+  font-size: 0.625rem; /* 10px */
+  @apply md:text-sm;
+
+  @media (min-width: 768px) {
+    display: block;
+    width: auto;
+    margin-left: 0;
+    margin-bottom: 4px;
+  }
+}
+
+nav ul li:first-child {
+  margin-left: 0;
+}
+
+nav ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+  width: auto;
+  height: 100%;
+  user-select: none;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+nav ul li.on a,
+nav ul li a:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-900);
+  font-weight: 600;
+}
+
+nav ul li.on a {
+  pointer-events: none; /* disable pointer icon if already on page */
+}
+
+nav select {
+  @apply text-base px-1;
+  font-weight: 600;
+  color: var(--gray-900);
+  background-color: #FFF;
+  width: 100%;
+}
+
+nav select:hover {
+  cursor: pointer;
+}
+
+.make-last-item {
+  margin-top: auto;
+}
+
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  @media (min-width: 768px) {
+    background-position: center left;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 12px;
+  }
+}
+
+.icon-home {
+  background-image: url('/images/icon_home.png');
+}
+
+.icon-website {
+  background-image: url('/images/icon_website.png');
+}
+
+.icon-crm {
+  background-image: url('/images/icon_crm.png');
+}
+
+.icon-marketing {
+  background-image: url('/images/icon_marketing.png');
+}
+
+.icon-invoices {
+  background-image: url('/images/icon_invoices.png');
+}
+
+.icon-money {
+  background-image: url('/images/icon_money.png');
+}
+
+.icon-business {
+  background-image: url('/images/icon_business.png');
+}
+
+.icon-more {
+  background-image: url('/images/icon_more.png');
+}
