@@ -18,7 +18,6 @@ export default function Promotion({ params }) {
 
   // lookup promotion based on ID
   const promotion = promotions.find((promo) => promo.id === id);
-  console.log("View promotion", promotion);
 
   // display promotion data in layout
   return (
