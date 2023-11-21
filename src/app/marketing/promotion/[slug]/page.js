@@ -36,7 +36,7 @@ export default function Promotion({ params }) {
 
               <div className="panel-body">
                 <span className="title">What&apos;s this ad about?</span>
-                <textarea>{promotion.paragraph}</textarea>
+                <textarea defaultValue={promotion.paragraph}></textarea>
 
                 {/* <span className="title">Tone of voice</span>
                 <DropDownBasic options={toneOptions} />
