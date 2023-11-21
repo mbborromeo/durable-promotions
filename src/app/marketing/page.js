@@ -20,7 +20,6 @@ export default function Marketing() {
   const promoTypes = filterOptions.filter((option) => option.id !== 0);
 
   const { promotions } = useContext(PromotionsContext);
-  console.log("Marketing: promotions", promotions);
 
   const onChangeFilter = (filterObj) => {
     setFilterSelectedIndex(filterObj.id);
