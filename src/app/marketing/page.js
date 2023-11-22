@@ -84,7 +84,7 @@ export default function Marketing() {
           </span>
         </div>
 
-        <div className="flex-wrapper-column">
+        <div className="flex-wrapper-column promotions">
           {searchAndFilteredPromotions.length > 0 &&
             searchAndFilteredPromotions.map((promo, p) => {
               return (

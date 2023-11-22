@@ -116,10 +116,9 @@ p {
   }
 }
 
-/* .flex-wrapper-column::after {
-  content: '';
-  flex: auto;
-} */
+.flex-wrapper-column.promotions {
+  justify-content: flex-start;
+}
 
 .flex-wrapper-start {
   display: flex;
