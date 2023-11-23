@@ -6,6 +6,7 @@
     "url": "etherphoto.durable.co",
     "paragraph":
       "A photography studio that specializes in ethereal emotive images.",
+    "tone": 1,
     "timestamp": 1666632563517 
   },
   {
@@ -15,6 +16,7 @@
     "url": "etherphoto.durable.ca",
     "paragraph":
       "Dos place collodion is a process that dates back to the 1850s. It involves coating a metal plate with a light-sensitive mixture.",
+    "tone": 2,
     "timestamp": 1666632563517
   },
   {
@@ -24,6 +26,7 @@
     "url": "etherphoto.durable.au",
     "paragraph":
       "Tres place collodion is an amazing process that allows you to create, beautiful, one-of-a-kind photographs!",
+    "tone": 1,
     "timestamp": 1666632563517
   },
   {
@@ -36,6 +39,7 @@
     "title": "Quatro-hour photo session!",
     "paragraph":
       "Hello, We are excited to announce a new promotion at our photography studio!",
-    "timestamp": 1666632563517
+      "tone": 2,    
+      "timestamp": 1666632563517
   }
 ]
