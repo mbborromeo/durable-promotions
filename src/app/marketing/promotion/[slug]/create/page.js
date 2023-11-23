@@ -23,9 +23,10 @@ const mockSinglePromo = {
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
   const [paragraph, setParagraph] = useState("");
-  const [fieldsInvalid, setFieldsInvalid] = useState(false);
+  const [textfieldInvalid, setTextfieldInvalid] = useState(false);
+  const [dropdownInvalid, setDropdownInvalid] = useState(false);
   const [isTextPristine, setIsTextPristine] = useState(true);
-  // const [isDropDownPristine, setIsDropDownPristine] = useState(true);
+  const [isDropDownPristine, setIsDropDownPristine] = useState(true);
   const [dropdownSelectedIndex, setDropdownSelectedIndex] = useState(0);
 
   const router = useRouter();
@@ -44,7 +45,7 @@ export default function PromotionCreate({ params }) {
 
   const handleClickCreate = (typeOfPromo) => {
     // validate fields are filled in
-    if (!fieldsInvalid && paragraph !== "") {
+    if (!textfieldInvalid && paragraph !== "" && !isDropDownPristine) {
       const newPromo = { ...mockSinglePromo }; // clone object shallow copy
 
       newPromo["type"] = typeOfPromo;
@@ -65,25 +66,38 @@ export default function PromotionCreate({ params }) {
 
       router.push("/marketing");
     } else {
-      setFieldsInvalid(true);
+      if (paragraph === "") {
+        setTextfieldInvalid(true);
+      }
+
+      if (dropdownSelectedIndex === 0) {
+        setDropdownInvalid(true);
+      }
     }
   };
 
   const onChangeTextArea = (ev) => {
     const inputText = ev.target.value;
+    setParagraph(inputText);
 
-    if (inputText === "" && !isTextPristine) {
-      setFieldsInvalid(true);
-    } else {
+    if (inputText !== "") {
       setIsTextPristine(false);
-      setFieldsInvalid(false);
+      setTextfieldInvalid(false);
     }
 
-    setParagraph(inputText);
+    if (inputText === "" && !isTextPristine) {
+      setTextfieldInvalid(true);
+    }
   };
 
   const onChangeDropdown = (toneObj) => {
-    setDropdownSelectedIndex(toneObj.id);
+    const toneId = toneObj.id;
+    setDropdownSelectedIndex(toneId);
+
+    if (toneId > 0) {
+      setIsDropDownPristine(false);
+      setDropdownInvalid(false);
+    }
   };
 
   return (
@@ -99,13 +113,15 @@ export default function PromotionCreate({ params }) {
           </div>
 
           <div className="panel-body">
-            {fieldsInvalid && (
+            {textfieldInvalid && (
               <span className="invalid">Ensure textarea has input</span>
             )}
-
             <span className="title">What&apos;s this ad about?</span>
             <textarea value={paragraph} onChange={onChangeTextArea}></textarea>
 
+            {dropdownInvalid && (
+              <span className="invalid">Ensure dropdown has selection</span>
+            )}
             <span className="title">Tone of voice</span>
             <DropDownBasic
               options={toneOptions}
