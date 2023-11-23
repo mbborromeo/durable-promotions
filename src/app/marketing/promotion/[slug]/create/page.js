@@ -27,6 +27,8 @@ const toneOptions = [
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
   const [paragraph, setParagraph] = useState("");
+  const [fieldsInvalid, setFieldsInvalid] = useState(false);
+  const [isTextPristine, setIsTextPristine] = useState(true);
 
   const router = useRouter();
 
@@ -43,26 +45,40 @@ export default function PromotionCreate({ params }) {
   };
 
   const handleClickCreate = (typeOfPromo) => {
-    const newPromo = { ...mockSinglePromo }; // clone object shallow copy
+    // validate fields are filled in
+    if (!fieldsInvalid && paragraph !== "") {
+      const newPromo = { ...mockSinglePromo }; // clone object shallow copy
 
-    newPromo["type"] = typeOfPromo;
+      newPromo["type"] = typeOfPromo;
 
-    const timestamp = Date.now();
-    newPromo["timestamp"] = timestamp;
+      const timestamp = Date.now();
+      newPromo["timestamp"] = timestamp;
 
-    const id = typeOfPromo + "_" + timestamp;
-    newPromo["id"] = id;
+      const id = typeOfPromo + "_" + timestamp;
+      newPromo["id"] = id;
 
-    newPromo["paragraph"] = paragraph;
+      newPromo["paragraph"] = paragraph;
 
-    const newPromotionsArray = [...promotions, newPromo];
-    persistAndSetPromotions(newPromotionsArray);
+      const newPromotionsArray = [...promotions, newPromo];
+      persistAndSetPromotions(newPromotionsArray);
 
-    router.push("/marketing");
+      router.push("/marketing");
+    } else {
+      setFieldsInvalid(true);
+    }
   };
 
   const onChangeTextArea = (ev) => {
-    setParagraph(ev.target.value);
+    const inputText = ev.target.value;
+
+    if (inputText === "" && !isTextPristine) {
+      setFieldsInvalid(true);
+    } else {
+      setIsTextPristine(false);
+      setFieldsInvalid(false);
+    }
+
+    setParagraph(inputText);
   };
 
   return (
@@ -78,6 +94,10 @@ export default function PromotionCreate({ params }) {
           </div>
 
           <div className="panel-body">
+            {fieldsInvalid && (
+              <span className="invalid">Ensure textarea has input</span>
+            )}
+
             <span className="title">What&apos;s this ad about?</span>
             <textarea value={paragraph} onChange={onChangeTextArea}></textarea>
 
