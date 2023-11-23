@@ -20,6 +20,7 @@ const mockSinglePromo = {
 };
 
 const toneOptions = [
+  { id: 0, name: "Please select" },
   { id: 1, name: "Professional" },
   { id: 2, name: "Casual" },
 ];

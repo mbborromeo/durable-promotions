@@ -32,9 +32,12 @@ export default function DropDownBasic({ options }) {
                 key={optionIdx}
                 className={({ active }) =>
                   `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                    active ? "bg-indigo-50 text-indigo-700" : "text-gray-900"
+                    active && optionIdx !== 0
+                      ? "bg-indigo-50 text-indigo-700"
+                      : "text-gray-900"
                   }`
                 }
+                disabled={optionIdx === 0}
                 value={option}
               >
                 {({ selected }) => (
