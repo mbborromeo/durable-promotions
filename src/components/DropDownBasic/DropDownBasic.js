@@ -1,15 +1,18 @@
 "use client";
-import { useState } from "react";
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import "./DropDownBasic.css";
 
-export default function DropDownBasic({ options }) {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+export default function DropDownBasic({
+  options,
+  selectedIndex,
+  handleOnChange,
+}) {
+  const selectedOption = options[selectedIndex];
 
   return (
-    <Listbox value={selectedOption} onChange={setSelectedOption}>
+    <Listbox value={selectedOption} onChange={handleOnChange}>
       <div className="relative">
         <Listbox.Button className="adjustment relative w-full rounded-md cursor-default bg-white py-3.5 md:py-2.5 leading-none pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
           <span className="block truncate">{selectedOption.name}</span>
@@ -32,9 +35,12 @@ export default function DropDownBasic({ options }) {
                 key={optionIdx}
                 className={({ active }) =>
                   `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                    active ? "bg-indigo-50 text-indigo-700" : "text-gray-900"
+                    active && optionIdx !== 0
+                      ? "bg-indigo-50 text-indigo-700"
+                      : "text-gray-900"
                   }`
                 }
+                disabled={optionIdx === 0}
                 value={option}
               >
                 {({ selected }) => (

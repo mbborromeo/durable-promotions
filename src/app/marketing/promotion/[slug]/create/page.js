@@ -9,6 +9,7 @@ import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 import { PromotionsContext } from "@/utils/store";
 
 import promotionTypes from "@/app/promotypes.json";
+import toneOptions from "@/app/tone.json";
 
 import "../page.css";
 
@@ -19,14 +20,14 @@ const mockSinglePromo = {
     "Netherland photography studio that specializes in ethereal emotive images.",
 };
 
-const toneOptions = [
-  { id: 1, name: "Professional" },
-  { id: 2, name: "Casual" },
-];
-
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
   const [paragraph, setParagraph] = useState("");
+  const [textfieldInvalid, setTextfieldInvalid] = useState(false);
+  const [dropdownInvalid, setDropdownInvalid] = useState(false);
+  const [isTextPristine, setIsTextPristine] = useState(true);
+  const [isDropDownPristine, setIsDropDownPristine] = useState(true);
+  const [dropdownSelectedIndex, setDropdownSelectedIndex] = useState(0);
 
   const router = useRouter();
 
@@ -43,26 +44,60 @@ export default function PromotionCreate({ params }) {
   };
 
   const handleClickCreate = (typeOfPromo) => {
-    const newPromo = { ...mockSinglePromo }; // clone object shallow copy
+    // validate fields are filled in
+    if (!textfieldInvalid && paragraph !== "" && !isDropDownPristine) {
+      const newPromo = { ...mockSinglePromo }; // clone object shallow copy
 
-    newPromo["type"] = typeOfPromo;
+      newPromo["type"] = typeOfPromo;
 
-    const timestamp = Date.now();
-    newPromo["timestamp"] = timestamp;
+      const timestamp = Date.now();
+      newPromo["timestamp"] = timestamp;
 
-    const id = typeOfPromo + "_" + timestamp;
-    newPromo["id"] = id;
+      const id = typeOfPromo + "_" + timestamp;
+      newPromo["id"] = id;
 
-    newPromo["paragraph"] = paragraph;
+      newPromo["paragraph"] = paragraph;
 
-    const newPromotionsArray = [...promotions, newPromo];
-    persistAndSetPromotions(newPromotionsArray);
+      // const tone = toneOptions[dropdownSelectedIndex];
+      newPromo["tone"] = dropdownSelectedIndex; // tone
 
-    router.push("/marketing");
+      const newPromotionsArray = [...promotions, newPromo];
+      persistAndSetPromotions(newPromotionsArray);
+
+      router.push("/marketing");
+    } else {
+      if (paragraph === "") {
+        setTextfieldInvalid(true);
+      }
+
+      if (dropdownSelectedIndex === 0) {
+        setDropdownInvalid(true);
+      }
+    }
   };
 
   const onChangeTextArea = (ev) => {
-    setParagraph(ev.target.value);
+    const inputText = ev.target.value;
+    setParagraph(inputText);
+
+    if (inputText !== "") {
+      setIsTextPristine(false);
+      setTextfieldInvalid(false);
+    }
+
+    if (inputText === "" && !isTextPristine) {
+      setTextfieldInvalid(true);
+    }
+  };
+
+  const onChangeDropdown = (toneObj) => {
+    const toneId = toneObj.id;
+    setDropdownSelectedIndex(toneId);
+
+    if (toneId > 0) {
+      setIsDropDownPristine(false);
+      setDropdownInvalid(false);
+    }
   };
 
   return (
@@ -78,11 +113,21 @@ export default function PromotionCreate({ params }) {
           </div>
 
           <div className="panel-body">
+            {textfieldInvalid && (
+              <span className="invalid">Ensure textarea has input</span>
+            )}
             <span className="title">What&apos;s this ad about?</span>
             <textarea value={paragraph} onChange={onChangeTextArea}></textarea>
 
+            {dropdownInvalid && (
+              <span className="invalid">Ensure dropdown has selection</span>
+            )}
             <span className="title">Tone of voice</span>
-            <DropDownBasic options={toneOptions} />
+            <DropDownBasic
+              options={toneOptions}
+              selectedIndex={dropdownSelectedIndex}
+              handleOnChange={onChangeDropdown}
+            />
 
             <ButtonSecondary label="Regenerate" />
           </div>
