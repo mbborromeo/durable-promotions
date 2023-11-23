@@ -3,6 +3,9 @@ import { useContext } from "react";
 import { useSearchParams } from "next/navigation";
 
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
+import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
+
+import toneOptions from "@/app/tone.json";
 
 import { PromotionsContext } from "@/utils/store";
 
@@ -38,10 +41,13 @@ export default function Promotion({ params }) {
                 <span className="title">What&apos;s this ad about?</span>
                 <textarea defaultValue={promotion.paragraph}></textarea>
 
-                {/* <span className="title">Tone of voice</span>
-                <DropDownBasic options={toneOptions} />
+                <span className="title">Tone of voice</span>
+                <DropDownBasic
+                  options={toneOptions}
+                  selectedIndex={promotion.tone}
+                />
 
-                <ButtonSecondary label="Regenerate" /> */}
+                {/* <ButtonSecondary label="Regenerate" /> */}
               </div>
 
               <div className="panel-footer border-top-lightgrey">

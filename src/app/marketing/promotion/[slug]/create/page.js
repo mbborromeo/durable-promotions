@@ -9,6 +9,7 @@ import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 import { PromotionsContext } from "@/utils/store";
 
 import promotionTypes from "@/app/promotypes.json";
+import toneOptions from "@/app/tone.json";
 
 import "../page.css";
 
@@ -19,17 +20,13 @@ const mockSinglePromo = {
     "Netherland photography studio that specializes in ethereal emotive images.",
 };
 
-const toneOptions = [
-  { id: 0, name: "Please select" },
-  { id: 1, name: "Professional" },
-  { id: 2, name: "Casual" },
-];
-
 export default function PromotionCreate({ params }) {
   const { promotions, setPromotions } = useContext(PromotionsContext);
   const [paragraph, setParagraph] = useState("");
   const [fieldsInvalid, setFieldsInvalid] = useState(false);
   const [isTextPristine, setIsTextPristine] = useState(true);
+  // const [isDropDownPristine, setIsDropDownPristine] = useState(true);
+  const [dropdownSelectedIndex, setDropdownSelectedIndex] = useState(0);
 
   const router = useRouter();
 
@@ -60,6 +57,9 @@ export default function PromotionCreate({ params }) {
 
       newPromo["paragraph"] = paragraph;
 
+      // const tone = toneOptions[dropdownSelectedIndex];
+      newPromo["tone"] = dropdownSelectedIndex; // tone
+
       const newPromotionsArray = [...promotions, newPromo];
       persistAndSetPromotions(newPromotionsArray);
 
@@ -80,6 +80,10 @@ export default function PromotionCreate({ params }) {
     }
 
     setParagraph(inputText);
+  };
+
+  const onChangeDropdown = (toneObj) => {
+    setDropdownSelectedIndex(toneObj.id);
   };
 
   return (
@@ -103,7 +107,11 @@ export default function PromotionCreate({ params }) {
             <textarea value={paragraph} onChange={onChangeTextArea}></textarea>
 
             <span className="title">Tone of voice</span>
-            <DropDownBasic options={toneOptions} />
+            <DropDownBasic
+              options={toneOptions}
+              selectedIndex={dropdownSelectedIndex}
+              handleOnChange={onChangeDropdown}
+            />
 
             <ButtonSecondary label="Regenerate" />
           </div>
