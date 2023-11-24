@@ -30,9 +30,9 @@ const SubNav = () => {
   const parentSegment = useSelectedLayoutSegment();
   const segments = useSelectedLayoutSegments();
   const currentSegment = segments[segments.length - 1];
-  // console.log("segments", segments);
-  // console.log("SubNav url parentSegment:", parentSegment);
-  // console.log("currentSegment", currentSegment);
+  console.log("SUBNAV segments", segments);
+  console.log("SUBNAV parentSegment:", parentSegment);
+  console.log("SUBNAV currentSegment", currentSegment);
 
   return (
     <div id="subnav">

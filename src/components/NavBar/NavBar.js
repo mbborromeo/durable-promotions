@@ -1,6 +1,19 @@
+"use client";
+import {
+  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
+} from "next/navigation";
+
 import "./NavBar.css";
 
 const NavBar = () => {
+  const parentSegment = useSelectedLayoutSegment();
+  const segments = useSelectedLayoutSegments();
+  const currentSegment = segments[segments.length - 1];
+  console.log("NAV segments", segments);
+  console.log("NAV parentSegment:", parentSegment);
+  console.log("NAV currentSegment", currentSegment);
+
   return (
     <nav>
       <div className="project-dropdown show-on-desktop">
@@ -28,7 +41,7 @@ const NavBar = () => {
             <span>CRM</span>
           </a>
         </li>
-        <li className="on">
+        <li className={parentSegment === "marketing" ? "on" : ""}>
           <a href="#">
             <span className="icon icon-marketing"></span>
             <span>Marketing</span>
