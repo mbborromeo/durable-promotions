@@ -3,7 +3,7 @@ import {
   useSelectedLayoutSegment,
   useSelectedLayoutSegments,
   useSearchParams,
-  // useParams,
+  usePathname,
 } from "next/navigation";
 
 import Link from "next/link";
@@ -13,14 +13,9 @@ import promoTypes from "@/app/promotypes.json";
 import "./SubNav.css";
 
 const SubNav = () => {
-  // const params = useParams();
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
 
-  // const promoType =
-  //   Object.keys(params).length > 0
-  //     ? promoTypes.find((promo) => promo.type === params.slug).name
-  //     : "";
   const promoType = type
     ? promoTypes.find((promo) => promo.type === type).name
     : "";
@@ -30,9 +25,9 @@ const SubNav = () => {
   const parentSegment = useSelectedLayoutSegment();
   const segments = useSelectedLayoutSegments();
   const currentSegment = segments[segments.length - 1];
-  console.log("SUBNAV segments", segments);
-  console.log("SUBNAV parentSegment:", parentSegment);
-  console.log("SUBNAV currentSegment", currentSegment);
+
+  const pathname = usePathname();
+  // console.log("SUBNAV pathname:", pathname);
 
   return (
     <div id="subnav">
@@ -45,7 +40,7 @@ const SubNav = () => {
               ) : (
                 parentSegment === "promotion" && (
                   <>
-                    <Link href="/marketing" title="Back">
+                    <Link href="/marketing/promotions" title="Back">
                       <span className="icon_back"></span>
                     </Link>
 
@@ -60,7 +55,9 @@ const SubNav = () => {
             </div>
             {segments.length === 0 && (
               <ul>
-                <li className="on">
+                <li
+                  className={pathname === "/marketing/promotions" ? "on" : ""}
+                >
                   <a href="#">Promotions</a>
                 </li>
                 <li>

@@ -10,9 +10,9 @@ const NavBar = () => {
   const parentSegment = useSelectedLayoutSegment();
   const segments = useSelectedLayoutSegments();
   const currentSegment = segments[segments.length - 1];
-  console.log("NAV segments", segments);
-  console.log("NAV parentSegment:", parentSegment);
-  console.log("NAV currentSegment", currentSegment);
+  // console.log("NAV segments", segments);
+  // console.log("NAV parentSegment:", parentSegment);
+  // console.log("NAV currentSegment", currentSegment);
 
   return (
     <nav>
