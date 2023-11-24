@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
@@ -8,7 +8,7 @@ import ButtonSecondary from "@/components/ButtonSecondary/ButtonSecondary";
 
 import { PromotionsContext } from "@/utils/store";
 
-import promotionTypes from "@/app/promotypes.json";
+import promoTypes from "@/app/promotypes.json";
 import toneOptions from "@/app/tone.json";
 
 import "../page.css";
@@ -20,7 +20,7 @@ const mockSinglePromo = {
     "Netherland photography studio that specializes in ethereal emotive images.",
 };
 
-export default function PromotionCreate({ params }) {
+export default function PromotionCreate() {
   const { promotions, setPromotions } = useContext(PromotionsContext);
   const [paragraph, setParagraph] = useState("");
   const [textfieldInvalid, setTextfieldInvalid] = useState(false);
@@ -30,10 +30,10 @@ export default function PromotionCreate({ params }) {
   const [dropdownSelectedIndex, setDropdownSelectedIndex] = useState(0);
 
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const promotion =
-    Object.keys(params).length > 0 &&
-    promotionTypes.find((option) => option.type === params.slug);
+  const type = searchParams.get("type");
+  const promotion = promoTypes.find((promo) => promo.type === type);
 
   const persistAndSetPromotions = (newPromotions) => {
     localStorage.setItem(

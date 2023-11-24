@@ -2,21 +2,28 @@
 import {
   useSelectedLayoutSegment,
   useSelectedLayoutSegments,
-  useParams,
+  useSearchParams,
+  // useParams,
 } from "next/navigation";
+
 import Link from "next/link";
 
-import promotions from "@/app/promotypes.json";
+import promoTypes from "@/app/promotypes.json";
 
 import "./SubNav.css";
 
 const SubNav = () => {
-  const params = useParams();
+  // const params = useParams();
+  const searchParams = useSearchParams();
+  const type = searchParams.get("type");
 
-  const promotionType =
-    Object.keys(params).length > 0
-      ? promotions.find((option) => option.type === params.slug).name
-      : "";
+  // const promoType =
+  //   Object.keys(params).length > 0
+  //     ? promoTypes.find((promo) => promo.type === params.slug).name
+  //     : "";
+  const promoType = type
+    ? promoTypes.find((promo) => promo.type === type).name
+    : "";
 
   // get route: /marketing/promotion/create
   // if subpage is /promotion, then change subnav links
@@ -43,9 +50,9 @@ const SubNav = () => {
                     </Link>
 
                     {currentSegment === "create" ? (
-                      <h1>Create {promotionType}</h1>
+                      <h1>Create {promoType}</h1>
                     ) : (
-                      <h1>View {promotionType}</h1>
+                      <h1>View {promoType}</h1>
                     )}
                   </>
                 )

@@ -6,21 +6,25 @@ import ButtonPrimary from "@/components/ButtonPrimary/ButtonPrimary";
 import DropDownBasic from "@/components/DropDownBasic/DropDownBasic";
 
 import toneOptions from "@/app/tone.json";
+import promoTypes from "@/app/promotypes.json";
 
 import { PromotionsContext } from "@/utils/store";
 
 import "./page.css";
 
-export default function Promotion({ params }) {
+export default function Promotion() {
+  // { params }
   // const promoType = params.slug;
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  const type = searchParams.get("type");
 
   // get promotions state from context
   const { promotions } = useContext(PromotionsContext);
 
   // lookup promotion based on ID
   const promotion = promotions.find((promo) => promo.id === id);
+  const promoType = promoTypes.find((promo) => promo.type === type).name;
 
   // display promotion data in layout
   return (
@@ -31,10 +35,10 @@ export default function Promotion({ params }) {
             <div className="panel left">
               <div className="panel-header border-bottom-lightgrey">
                 <h2 className="heading-create">Details</h2>
-                {/* <p>
-                  Provide us with the following details and we&apos;ll generate a{" "}
-                  {promotion.name} for you.
-                </p> */}
+                <p>
+                  Provide us with the following details and we&apos;ll generate
+                  a {promoType} for you.
+                </p>
               </div>
 
               <div className="panel-body">
@@ -52,8 +56,7 @@ export default function Promotion({ params }) {
 
               <div className="panel-footer border-top-lightgrey">
                 <a href="#" className="icon_open">
-                  Learn more about
-                  {/* {promotion.name} */}
+                  Learn more about {promoType}
                 </a>
               </div>
             </div>
