@@ -27,7 +27,7 @@ const SubNav = () => {
   const currentSegment = segments[segments.length - 1];
 
   const pathname = usePathname();
-  console.log("SUBNAV pathname:", pathname);
+  // console.log("SUBNAV pathname:", pathname);
 
   return (
     <div id="subnav">
